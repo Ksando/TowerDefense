@@ -1,8 +1,12 @@
-﻿using System.Collections;
+﻿//
+// Created by absdspr
+//
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Multipliers : MonoBehaviour {
+public class Multipliers : MonoBehaviour
+{
     //На что умножать характеристику при увелечнии уровня башни или врага
     private int healthMulti;
     private int moneyMulti; 
@@ -69,12 +73,13 @@ public class Multipliers : MonoBehaviour {
         return slowTimeMulti;
     }
     // Use this for initialization
-    void Start () {
+    void Start ()
+    {
 		
 	}
-	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
 		
 	}
 }

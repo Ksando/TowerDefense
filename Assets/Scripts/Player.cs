@@ -1,13 +1,16 @@
-﻿using System.Collections;
+﻿//
+// Created by absdspr
+//
+using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 
-public class Player : MonoBehaviour {
-
-
+public class Player : MonoBehaviour
+{
     private string className;
     private int money;
-    Abillity abillity = new Abillity();
+    Abillity abillity;
     public int getMoney()
     {
         return money;
@@ -15,7 +18,6 @@ public class Player : MonoBehaviour {
     //Adding money to player
     public void setMoney(int value)
     {
-       
        money = money + value;
     }
     public string getClassName()
@@ -36,16 +38,23 @@ public class Player : MonoBehaviour {
         Debug.Log("no money");
         return false;
     }
-   
-	// Use this for initialization
-	void Start () {
+
+    // Use this for initialization
+    private void Awake()
+    {
         money = 150;
-        abillity.setAbilltys(className);
-		
-	}
+    }
+    void Start ()
+    {
+        abillity = GetComponent<Abillity>();
+        abillity.setAbilltys("General");
+        abillity.setAbilltys("Scientist");
+        abillity.setAbilltys("Engineer");
+    }
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
 		
 	}
 }
