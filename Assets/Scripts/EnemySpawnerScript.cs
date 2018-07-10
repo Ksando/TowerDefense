@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿//Sasha
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemySpawnerScript : MonoBehaviour {
 
@@ -8,8 +10,8 @@ public class EnemySpawnerScript : MonoBehaviour {
     public GameObject[] enemy;
     Vector2 whereToSpawn = new Vector2();
     public int HowManyToSpawn;
-    int counter = 0;
-    float nextSpawn = 0.0f;
+    //int counter = 0;
+    //float nextSpawn = 0.0f;
     public GameObject canvasObject;
 
 	// Use this for initialization

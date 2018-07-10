@@ -27,7 +27,7 @@ GameObject:
   - component: {fileID: 114575984354650326}
   m_Layer: 0
   m_Name: knight
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -290,7 +290,7 @@ MonoBehaviour:
   - {fileID: 4963321850003312, guid: 02ccdf6c6116d7c48becbff1fd4fce61, type: 2}
   - {fileID: 4963321850003312, guid: 034a0230a64c07a44973b11fe2c93c0b, type: 2}
   currentWayPoint: 0
-  speed: 3
+  speed: 5
 --- !u!212 &212866833865386272
 SpriteRenderer:
   m_ObjectHideFlags: 1

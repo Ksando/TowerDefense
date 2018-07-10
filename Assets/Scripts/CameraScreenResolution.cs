@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿//Sasha
+using UnityEngine;
 using System.Collections;
 
 public class CameraScreenResolution : MonoBehaviour

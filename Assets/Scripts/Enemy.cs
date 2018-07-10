@@ -1,11 +1,11 @@
-﻿using UnityEngine;
+﻿//Sasha
+using UnityEngine;
 using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
 
     public float health = 100;
-    public int reward = 10;
     public Image healthBar;
     public float maxHealth = 100f;
     private void Start()
@@ -37,6 +37,7 @@ public class Enemy : MonoBehaviour
         }
           }
     }
+
 
     private void Die()
     {
