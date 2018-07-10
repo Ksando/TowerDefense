@@ -46,13 +46,13 @@ public class Abillity : MonoBehaviour
 
     public void scientistAbillitys()
     {
-        upgradeCost = Math.Round(upgradeCost * 0.7); // Более дешевый ап вышек ( предположительно)
+      
         Debug.Log("Учоный");
     }
 
     public void generalAbillitys()
     {
-        buyCost = Math.Round(buyCost * 0.8); // Более дешевая установка ( предположительно)
+       
         Debug.Log("Я генерал");
     }
 }
