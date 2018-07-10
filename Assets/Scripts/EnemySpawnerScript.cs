@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemySpawnerScript : MonoBehaviour {
+public class EnemySpawnerScript : MonoBehaviour
+{
 
     public GameObject[] enemyPrefab;
     public GameObject[] enemy;
