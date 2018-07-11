@@ -6,6 +6,9 @@ public class TowerScript : MonoBehaviour
 {
     float Range = 2;
     float CurrColdown, Cooldown;
+
+    public GameObject Projectile;
+
     private void Update()
     {
         if (CanShoot())
@@ -44,7 +47,9 @@ public class TowerScript : MonoBehaviour
     void Shoot(Transform enemy)
     {
         CurrColdown = Cooldown;
-        Debug.Log("Shoot");
+        GameObject proj = Instantiate(Projectile);
+        proj.transform.position = transform.position;
+        proj.GetComponent<TowerProjectile>().SetTarget(enemy);
     }
 
 }

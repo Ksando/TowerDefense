@@ -13,12 +13,16 @@ public class Enemy : MonoBehaviour
 
     }
 
-  //  public void TakeDamage(float amount)
-  //  {
-  //      health -= amount;
-  //      if (health <= 0)
-  //          Die();
-  //  }
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
+    }
+
+    void CheckIsAlive()
+    {
+        if (health <= 0)
+            Destroy(gameObject);
+    }
 
     void OnCollisionEnter2D(Collision2D col)
     {
