@@ -16,7 +16,7 @@ public class Player : MonoBehaviour
         return money;
     }
     //Adding money to player
-    public void setMoney(int value)
+    public void addMoney(int value)
     {
        money = money + value;
     }
@@ -32,7 +32,7 @@ public class Player : MonoBehaviour
     {
         if (this.money >= value)
         {
-            this.setMoney(-value);
+            this.addMoney(-value);
             return true;
         }
         Debug.Log("no money");
