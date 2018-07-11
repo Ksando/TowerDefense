@@ -11,11 +11,16 @@ public class Abillity : MonoBehaviour
 
     private double upgradeCost;
     private double buyCost;
+    Player player;
+    Multipliers multi;
+    private int currentMulti;
+
 	// Use this for initialization
 	void Start ()
     {
-
-	}
+        player = GetComponent<Player>();
+        multi = GetComponent<Multipliers>();
+    }
 	// Update is called once per frame
 	void Update ()
     {
@@ -55,4 +60,10 @@ public class Abillity : MonoBehaviour
        
         Debug.Log("Я генерал");
     }
+    public void openCore()
+    {
+       
+    }
+
+
 }

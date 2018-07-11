@@ -8,9 +8,9 @@ using UnityEngine.UI;
 
 public class UI : MonoBehaviour {
 
-    int money;
     Player player;
-    Text text;
+    Text money;
+    Text currentWave;
 
 	void Start ()
     {
@@ -20,8 +20,8 @@ public class UI : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        text = GameObject.Find("Text").GetComponent<Text>();
-        text.text = player.getMoney().ToString()+"$";
+        money = GameObject.Find("Text").GetComponent<Text>();
+        money.text = player.getMoney().ToString()+"$";
         
     }
 

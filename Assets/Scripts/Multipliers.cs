@@ -146,13 +146,13 @@ public class Multipliers : MonoBehaviour
         switch (something)
         {
             case "Simple":
-                healthMultiSimple = value;
+                damageMultiSimple = value;
                 break;
             case "Tank":
-                healthMultiTank = value;
+                damageMultiTank = value;
                 break;
             case "Fast":
-                healthMultiFast = value;
+                damageMultiFast = value;
                 break;
             case "TowerSimple":
                 damageMultiTowerSimple = value;
@@ -274,6 +274,7 @@ public class Multipliers : MonoBehaviour
                 break;
             default:
                 return -1;
+                break;
         }
     }
     public void setSlowTimeMulti(int value)
