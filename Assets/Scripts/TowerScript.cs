@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class TowerScript : MonoBehaviour
 {
-    float Range = 2;
-    float CurrColdown, Cooldown;
+    public float Range = 2;
+    public float CurrColdown, Cooldown;
 
     public GameObject Projectile;
 
@@ -30,7 +30,7 @@ public class TowerScript : MonoBehaviour
         Transform nearestEnemy = null;
         float nearestEnemyDistance = Mathf.Infinity;
 
-        foreach (GameObject enemy in GameObject.FindGameObjectsWithTag("Enemy"))
+        foreach (GameObject enemy in GameObject.FindGameObjectsWithTag("enemy"))
         {
             float CurrDistance = Vector2.Distance(transform.position, enemy.transform.position);
 

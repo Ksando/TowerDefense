@@ -13,9 +13,15 @@ public class Enemy : MonoBehaviour
 
     }
 
+    private void update()
+    {
+    }
+
     public void TakeDamage(int damage)
     {
         health -= damage;
+        healthBar.fillAmount = health / maxHealth;
+        CheckIsAlive();
     }
 
     void CheckIsAlive()
