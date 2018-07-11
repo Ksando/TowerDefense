@@ -71,7 +71,22 @@ public class Abillity : MonoBehaviour
             multi.setDamageMulti(1.5f, names[i]);
             multi.setReloadMulti(1.5f, names[i]);
         }
-       
+        StartCoroutine("DoMessage");
+        for (int i = 0; i < names.Length; i++)
+        {
+            multi.setDamageMulti(previousMultiDamage[i], names[i]);
+            multi.setReloadMulti(previousMultiSpeed[i], names[i]);
+        }
+
+    }
+
+    IEnumerator DoMessage()
+    {
+        for (; ; )
+        {
+            Debug.Log("hetri");
+            yield return new WaitForSeconds(10f);
+        }
     }
 
 
