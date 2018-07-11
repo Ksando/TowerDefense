@@ -8,18 +8,22 @@ using UnityEngine;
 
 public class Abillity : MonoBehaviour
 {
-
-    private double upgradeCost;
-    private double buyCost;
     Player player;
     Multipliers multi;
-    private int currentMulti;
+    private float [] previousMultiSpeed = new float[4];
+    private float [] previousMultiDamage = new float[4];
+    private string[] names = {"TowerSimple","TowerSlow","TowerSniper","TowerAOE" };
 
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    void Start ()
     {
         player = GetComponent<Player>();
         multi = GetComponent<Multipliers>();
+        for(int i = 0; i < names.Length; i++)
+        {
+            previousMultiDamage[i] = multi.getDamageMulti(names[i]);
+            previousMultiSpeed[i] = multi.getSpeedMulti(names[i]);
+        }
     }
 	// Update is called once per frame
 	void Update ()
@@ -62,6 +66,11 @@ public class Abillity : MonoBehaviour
     }
     public void openCore()
     {
+       for(int i = 0; i < names.Length; i ++)
+        {
+            multi.setDamageMulti(1.5f, names[i]);
+            multi.setReloadMulti(1.5f, names[i]);
+        }
        
     }
 
