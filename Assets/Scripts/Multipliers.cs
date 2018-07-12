@@ -28,16 +28,19 @@ public class Multipliers : MonoBehaviour
     private float damageMultiTowerSlow;   //Множители урона башен
     private float damageMultiTowerSniper;
     private float damageMultiTowerAOE;
+    private float damageMultiTowerFast;
 
     private float reloadMultiTowerSimple;
     private float reloadMultiTowerSlow; //Множители перезарядки башен
     private float reloadMultiTowerSniper;
     private float reloadMultiTowerAOE;
+    private float reloadMultiTowerFast;
 
     private float rangeMultiTowerSimple;
     private float rangeMultiTowerSlow;
     private float rangeMultiTowerSniper;
     private float rangeMultiTowerAOE;
+    private float rangeMultiTowerFast;
 
     private float slowTimeMulti;
     //Геттеры и сеттеры
@@ -166,6 +169,9 @@ public class Multipliers : MonoBehaviour
             case "TowerAOE":
                 damageMultiTowerAOE = value;
                 break;
+            case "TowerFast":
+                damageMultiTowerFast = value;
+                break;
         }
     }
     public float getDamageMulti(string something)
@@ -193,6 +199,8 @@ public class Multipliers : MonoBehaviour
             case "TowerAOE":
                 return damageMultiTowerAOE;
                 break;
+            case "TowerFast":
+                return damageMultiTowerFast;
             default:
                 return -1;
                 break;
@@ -214,6 +222,9 @@ public class Multipliers : MonoBehaviour
             case "TowerAOE":
                 rangeMultiTowerAOE = value;
                 break;
+            case "TowerFast":
+                rangeMultiTowerFast = value;
+                break;
         }
     }
     public float getRangeMulti(string something)
@@ -231,6 +242,9 @@ public class Multipliers : MonoBehaviour
                 break;
             case "TowerAOE":
                  return rangeMultiTowerAOE;
+                break;
+            case "TowerFast":
+                return rangeMultiTowerFast;
                 break;
             default:
                 return -1;
@@ -254,6 +268,9 @@ public class Multipliers : MonoBehaviour
             case "TowerAOE":
                 reloadMultiTowerAOE = value;
                 break;
+            case "TowerFast":
+                reloadMultiTowerFast = value;
+                break;
         }
     }
     public float getReloadMulti(string something)
@@ -271,6 +288,9 @@ public class Multipliers : MonoBehaviour
                 break;
             case "TowerAOE":
                 return reloadMultiTowerAOE;
+                break;
+            case "TowerFast":
+                return reloadMultiTowerFast;
                 break;
             default:
                 return -1;
