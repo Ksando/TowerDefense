@@ -10,6 +10,13 @@ public class TowerScript : MonoBehaviour
     public TowerType selfType;
     GameControllerScr gcs;
 
+    string[] enemyTags =
+             {
+                 "DefaultMutant",
+                 "FastMutant",
+                 "HeavyMutant",
+                 "BossMutant"
+             };
     private void Start()
     {
         gcs = FindObjectOfType<GameControllerScr>();
@@ -39,14 +46,18 @@ public class TowerScript : MonoBehaviour
         Transform nearestEnemy = null;
         float nearestEnemyDistance = Mathf.Infinity;
 
-        foreach (GameObject enemy in GameObject.FindGameObjectsWithTag("DefaultMutant"))
+        foreach (string tag in enemyTags)
         {
-            float CurrDistance = Vector2.Distance(transform.position, enemy.transform.position);
+            GameObject[] enemy = GameObject.FindGameObjectsWithTag(tag);
+            for (int i = 0; i < enemy.Length; i++)
+            {
+                float CurrDistance = Vector2.Distance(transform.position, enemy[i].transform.position);
 
                 if (CurrDistance < nearestEnemyDistance && CurrDistance <= selfTower.Range)
-            {
-                nearestEnemy = enemy.transform;
-                nearestEnemyDistance = CurrDistance;
+                {
+                    nearestEnemy = enemy[i].transform;
+                    nearestEnemyDistance = CurrDistance;
+                }
             }
         }
         if (nearestEnemy != null)
