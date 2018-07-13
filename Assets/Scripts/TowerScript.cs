@@ -4,23 +4,32 @@ using UnityEngine;
 
 public class TowerScript : MonoBehaviour
 {
-    public float Range = 2;
-    public float CurrColdown, Cooldown;
 
     public GameObject Projectile;
+    Tower selfTower;
+    public TowerType selfType;
+    GameControllerScr gcs;
+
+    private void Start()
+    {
+        gcs = FindObjectOfType<GameControllerScr>();
+
+        selfTower = gcs.AllTowers[(int)selfType];
+        GetComponent<SpriteRenderer>().sprite = selfTower.Spr;
+    }
 
     private void Update()
     {
         if (CanShoot())
             SearchTarget();
 
-        if (CurrColdown > 0)
-            CurrColdown -= Time.deltaTime;
+        if (selfTower.CurrCooldown > 0)
+            selfTower.CurrCooldown -= Time.deltaTime;
     }
 
     bool CanShoot()
     {
-        if (CurrColdown <= 0)
+        if (selfTower.CurrCooldown <= 0)
             return true;
         return false;
     }
@@ -34,7 +43,7 @@ public class TowerScript : MonoBehaviour
         {
             float CurrDistance = Vector2.Distance(transform.position, enemy.transform.position);
 
-                if (CurrDistance < nearestEnemyDistance && CurrDistance <= Range)
+                if (CurrDistance < nearestEnemyDistance && CurrDistance <= selfTower.Range)
             {
                 nearestEnemy = enemy.transform;
                 nearestEnemyDistance = CurrDistance;
@@ -46,10 +55,11 @@ public class TowerScript : MonoBehaviour
     }
     void Shoot(Transform enemy)
     {
-        CurrColdown = Cooldown;
+        selfTower.CurrCooldown = selfTower.Cooldown;
         GameObject proj = Instantiate(Projectile);
+        proj.GetComponent<TowerProjectileScr>().selfProjectile = gcs.AllProjectiles[(int)selfType];
         proj.transform.position = transform.position;
-        proj.GetComponent<TowerProjectile>().SetTarget(enemy);
+        proj.GetComponent<TowerProjectileScr>().SetTarget(enemy);
     }
 
 }
