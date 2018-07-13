@@ -11,6 +11,11 @@ public class WaveSpawner : MonoBehaviour {
 	private float countdown = 0f;
 	public Text waveCountdownText;
 	private int waveIndex = 0;
+    
+    public int getWaveIndex()
+    {
+        return waveIndex;
+    }
 
 
 

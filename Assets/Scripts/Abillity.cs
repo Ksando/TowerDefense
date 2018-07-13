@@ -8,8 +8,8 @@ using UnityEngine;
 
 public class Abillity : MonoBehaviour
 {
-    Player player;
-    Multipliers multi;
+    public Player player;
+    public Multipliers multi;
     Vector2 position;
     private float [] previousMultiSpeed = new float[3];
     private float [] previousMultiDamage = new float[5];

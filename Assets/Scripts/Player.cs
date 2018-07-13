@@ -11,8 +11,9 @@ public class Player : MonoBehaviour
 {
     private string className;
     private int money;
-    Abillity abillity;
-    Text moneyText;
+    public Abillity abillity;
+    public Text moneyText;
+
     public int getMoney()
     {
         return money;
@@ -50,12 +51,11 @@ public class Player : MonoBehaviour
     {
         className = GameObject.Find("Settings").GetComponent<Settings>().className;
         abillity = GetComponent<Abillity>();
-        moneyText = GameObject.Find("Money").GetComponent<Text>();
     }
 	
 	// Update is called once per frame
 	void Update ()
     {
-        moneyText.text = "$" + money;
+        
 	}
 }

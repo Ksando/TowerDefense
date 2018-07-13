@@ -24,16 +24,35 @@ public class Base : MonoBehaviour {
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.gameObject.tag == "enemy")
+        if (col.gameObject.tag == "DefaultMutant")
         {
-            Debug.Log("PRIVET");
             if (BaseHealth > 0)
             {
-                Debug.Log("YAVOSHLA");
                 StartCoroutine("WaitingFunction111");
             }
-
         }
+        if (col.gameObject.tag == "FastMutant")
+        {
+            if (BaseHealth > 0)
+            {
+                StartCoroutine("WaitingFunction111");
+            }
+        }
+        if (col.gameObject.tag == "HeavyMutant")
+        {
+            if (BaseHealth > 0)
+            {
+                StartCoroutine("WaitingFunction111");
+            }
+        }
+        if (col.gameObject.tag == "BossMutant")
+        {
+            if (BaseHealth > 0)
+            {
+                StartCoroutine("WaitingFunction111");
+            }
+        }
+
     }
 
     private void Die()
@@ -46,7 +65,7 @@ public class Base : MonoBehaviour {
     {
         while (BaseHealth > 0)
         {
-            Debug.Log("BASE TAGGG");
+            Debug.Log("Mutant just hit the base!");
             BaseHealth -= 10;
             BaseHealthBar.fillAmount = BaseHealth / maxBaseHealth;
             print(Time.time);

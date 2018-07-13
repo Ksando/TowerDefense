@@ -9,6 +9,10 @@ TagManager:
   - enemy
   - base
   - DefaultTower
+  - DefaultMutant
+  - FastMutant
+  - HeavyMutant
+  - BossMutant
   layers:
   - Default
   - TransparentFX
