@@ -9,6 +9,7 @@ public class MainMenu : MonoBehaviour {
 
 	public GameObject menu;
 	public GameObject levelSel;
+    public GameObject startLevel;
 	public GameObject settings;
 	public GameObject devs;
 
@@ -17,6 +18,7 @@ public class MainMenu : MonoBehaviour {
 	{
 		menu.SetActive(true);
 		levelSel.SetActive(false);
+        startLevel.SetActive(false);
 		settings.SetActive(false);
 		devs.SetActive(false);
 	}
@@ -31,9 +33,9 @@ public class MainMenu : MonoBehaviour {
 
 	public void sceneLevelSel()				// Вызывается при нажатии кнопки "Новая игра". Открывается сцена Выбор уровня
 	{
-		SceneManager.LoadScene(1);
 		levelSel.SetActive(true);           // Включается сцена Выбор уровня
 		menu.SetActive(false);              // Отключается сцена Главное меню
+        startLevel.SetActive(false);        // Отключается сцена Начать уровень
 		settings.SetActive(false);          // Отключается сцена Настройки
 		devs.SetActive(false);              // Отключается сцена Разработчики
 	}
@@ -53,4 +55,17 @@ public class MainMenu : MonoBehaviour {
 		levelSel.SetActive(false);          // Отключается сцена Выбор уровня
 		settings.SetActive(false);          // Отключается сцена Настройки
 	}
+
+    public void chooseLevel(int num)        // Выбор уровня
+    {
+        GameObject.Find("Settings").GetComponent<Settings>().levelNum = num;
+        startLevel.SetActive(true);
+    }
+
+    public void changeScene(string c)       // Выбор класса и запуск уровня
+    {
+        Settings sets = GameObject.Find("Settings").GetComponent<Settings>();
+        sets.className = c;
+        SceneManager.LoadScene(sets.levelNum);
+    }
 }

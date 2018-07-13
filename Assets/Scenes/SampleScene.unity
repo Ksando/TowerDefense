@@ -13487,7 +13487,7 @@ MonoBehaviour:
     - {fileID: 1313884380871232, guid: d634aa912803d0842b8b5a740c021ee5, type: 2}
     rate: 1
   spawnPoint: {fileID: 250575509}
-  timeBetweenWaves: 5
+  timeBetweenWaves: 30
   waveCountdownText: {fileID: 1064813610}
 --- !u!4 &1551619668
 Transform:
