@@ -12,6 +12,7 @@ public class UI : MonoBehaviour {
     Text money;
     Text currentWave;
     WaveSpawner wave;
+    public GameObject pausePanel;
 
 	void Start ()
     {
@@ -20,13 +21,11 @@ public class UI : MonoBehaviour {
         wave = GameObject.Find("WaveSpawner").GetComponent<WaveSpawner>();
         currentWave = GameObject.Find("currentWaveText").GetComponent<Text>();
     }
-	
-	// Update is called once per frame
-	void Update ()
+
+    // Update is called once per frame
+    void Update()
     {
-        money.text = player.getMoney().ToString()+"$";
-        currentWave.text ="Current wave is " +  wave.getWaveIndex().ToString();
+        money.text = player.getMoney().ToString() + "$";
+        currentWave.text = "Current wave is " + wave.getWaveIndex().ToString();
     }
-
-
 }
