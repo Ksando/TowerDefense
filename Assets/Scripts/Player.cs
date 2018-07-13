@@ -48,6 +48,7 @@ public class Player : MonoBehaviour
     }
     void Start ()
     {
+        className = GameObject.Find("Settings").GetComponent<Settings>().className;
         abillity = GetComponent<Abillity>();
         moneyText = GameObject.Find("Money").GetComponent<Text>();
     }
