@@ -47,9 +47,6 @@ public class Player : MonoBehaviour
     void Start ()
     {
         abillity = GetComponent<Abillity>();
-        abillity.setAbilltys("General");
-        abillity.setAbilltys("Scientist");
-        abillity.setAbilltys("Engineer");
     }
 	
 	// Update is called once per frame

@@ -10,26 +10,28 @@ public class Abillity : MonoBehaviour
 {
     Player player;
     Multipliers multi;
-    private float [] previousMultiSpeed = new float[4];
-    private float [] previousMultiDamage = new float[4];
-    private string[] names = {"TowerSimple","TowerSlow","TowerSniper","TowerAOE" };
+    Vector2 position;
+    private float [] previousMultiSpeed = new float[3];
+    private float [] previousMultiDamage = new float[5];
+    private float [] previousMultiReload = new float[5];
+    private string[] towers = {"TowerSimple","TowerSlow","TowerSniper","TowerAOE","TowerFast" };
+    private string[] enemys = { "Simple", "Fast", "Tank" };
 
     // Use this for initialization
     void Start ()
     {
         player = GetComponent<Player>();
         multi = GetComponent<Multipliers>();
-        for(int i = 0; i < names.Length; i++)
-        {
-            previousMultiDamage[i] = multi.getDamageMulti(names[i]);
-            previousMultiSpeed[i] = multi.getSpeedMulti(names[i]);
-        }
+       
     }
-	// Update is called once per frame
-	void Update ()
+    // Update is called once per frame
+    void Update()
     {
-		
-	}
+
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+            position = Input.mousePosition;
+    }
+        
     public void setAbilltys(string value)
     {
         switch(value)
@@ -50,7 +52,7 @@ public class Abillity : MonoBehaviour
 
     public void engineerAbillitys()
     {
-        Debug.Log("Я у мамы инжинер");
+        Debug.Log("Я у мамы инженер");
     }
 
     public void scientistAbillitys()
@@ -64,30 +66,64 @@ public class Abillity : MonoBehaviour
        
         Debug.Log("Я генерал");
     }
+    //Активаня спосбность инженера
     public void openCore()
     {
-       for(int i = 0; i < names.Length; i ++)
+        //Получаем старые значения множителей
+        for (int i = 0; i < towers.Length; i++)
         {
-            multi.setDamageMulti(1.5f, names[i]);
-            multi.setReloadMulti(1.5f, names[i]);
+            previousMultiDamage[i] = multi.getDamageMulti(towers[i]);
+            previousMultiReload[i] = multi.getReloadMulti(towers[i]);
         }
-        StartCoroutine("DoMessage");
-        for (int i = 0; i < names.Length; i++)
+        //Увеличиваем их на n времени
+        for (int i = 0; i < towers.Length; i ++)
         {
-            multi.setDamageMulti(previousMultiDamage[i], names[i]);
-            multi.setReloadMulti(previousMultiSpeed[i], names[i]);
+            multi.setDamageMulti(1.5f * previousMultiDamage[i], towers[i]);
+            multi.setReloadMulti(1.5f * previousMultiReload[i], towers[i]);
+        }
+        //
+        //Возвращаем их обратно
+        for (int i = 0; i < towers.Length; i++)
+        {
+            multi.setDamageMulti(previousMultiDamage[i], towers[i]);
+            multi.setReloadMulti(previousMultiReload[i], towers[i]);
         }
 
     }
-
-    IEnumerator DoMessage()
+    //Ракетный удар
+    public void rocketPunch()   
     {
-        for (; ; )
+        foreach(GameObject enemy in GameObject.FindGameObjectsWithTag("enemy"))
         {
-            Debug.Log("hetri");
-            yield return new WaitForSeconds(10f);
+           
+            float distance = Vector2.Distance(position, enemy.transform.position); //Проверка растояния, входит ли враг в область поражения
+            Debug.Log(distance);
+            if(distance <= 645)
+            { 
+                enemy.GetComponent<Enemy>().TakeDamage(200);
+            }
+        }
+
+    }
+    public void cryogen()
+    {
+        //Получаем старые значения множителей
+        for (int i = 0; i < enemys.Length; i++)
+        {
+            previousMultiSpeed[i] = multi.getSpeedMulti(enemys[i]);
+        }
+        for (int i = 0; i < enemys.Length; i++)
+        {
+            multi.setSpeedMulti(0, enemys[i]);
+        }
+        for(int i = 0; i <enemys.Length; i++)
+        {
+            multi.setSpeedMulti(previousMultiSpeed[i], enemys[i]);
         }
     }
+    
+
+
 
 
 }
