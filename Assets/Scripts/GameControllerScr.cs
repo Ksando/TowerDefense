@@ -45,10 +45,10 @@ public class GameControllerScr : MonoBehaviour {
 
     private void Awake()
     {
-        AllTowers.Add(new Tower(3, 1, "TowerSprites/Dtower"));
-        AllTowers.Add(new Tower(4, 3, "TowerSprites/Stower"));
+        AllTowers.Add(new Tower(3, 1, "TowerSprites/DiTower"));
+        AllTowers.Add(new Tower(4, 3, "TowerSprites/SiTower"));
 
-        AllProjectiles.Add(new TowerProjectile(10, 20, "ProjectilesSprites/DProjectile"));
-        AllProjectiles.Add(new TowerProjectile(5, 0, "ProjectilesSprites/SProjectile"));
+        AllProjectiles.Add(new TowerProjectile(10, 20, "ProjectilesSprites/DiProjectile"));
+        AllProjectiles.Add(new TowerProjectile(5, 2, "ProjectilesSprites/SiProjectile"));
     }
 }
