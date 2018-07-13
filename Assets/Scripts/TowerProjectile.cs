@@ -2,11 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TowerProjectile : MonoBehaviour {
+public class TowerProjectileScr : MonoBehaviour {
 
     Transform target;
-    float speed = 20;
-    int damage = 10;
+    public TowerProjectile selfProjectile; 
+
+    private void Start()
+    {
+        GetComponent<SpriteRenderer>().sprite = selfProjectile.Spr;
+    }
     void Update()
     {
         Move();
@@ -16,19 +20,20 @@ public class TowerProjectile : MonoBehaviour {
     {
         target = enemy;
     }
+
     private void Move()
     {
         if (target != null)
         {
             if (Vector2.Distance(transform.position, target.position) < .1f)
             {
-                target.GetComponent<Enemy>().TakeDamage(damage);
+                target.GetComponent<Enemy>().TakeDamage(selfProjectile.damage);
                 Destroy(gameObject);
             }
             else
             {
                 Vector2 dir = target.position - transform.position;
-                transform.Translate(dir.normalized * Time.deltaTime * speed);
+                transform.Translate(dir.normalized * Time.deltaTime * selfProjectile.speed);
             }
         }
         else
