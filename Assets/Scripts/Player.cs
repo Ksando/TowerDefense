@@ -5,12 +5,14 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
     private string className;
     private int money;
     Abillity abillity;
+    Text moneyText;
     public int getMoney()
     {
         return money;
@@ -47,11 +49,12 @@ public class Player : MonoBehaviour
     void Start ()
     {
         abillity = GetComponent<Abillity>();
+        moneyText = GameObject.Find("Money").GetComponent<Text>();
     }
 	
 	// Update is called once per frame
 	void Update ()
     {
-		
+        moneyText.text = "$" + money;
 	}
 }
