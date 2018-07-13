@@ -30,7 +30,7 @@ public class TowerScript : MonoBehaviour
         Transform nearestEnemy = null;
         float nearestEnemyDistance = Mathf.Infinity;
 
-        foreach (GameObject enemy in GameObject.FindGameObjectsWithTag("enemy"))
+        foreach (GameObject enemy in GameObject.FindGameObjectsWithTag("DefaultMutant"))
         {
             float CurrDistance = Vector2.Distance(transform.position, enemy.transform.position);
 
