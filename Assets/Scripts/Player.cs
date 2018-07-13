@@ -11,8 +11,9 @@ public class Player : MonoBehaviour
 {
     private string className;
     private int money;
-    Abillity abillity;
-    Text moneyText;
+    public Abillity abillity;
+    public Text moneyText;
+
     public int getMoney()
     {
         return money;
