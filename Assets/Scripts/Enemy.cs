@@ -7,13 +7,13 @@ public class Enemy : MonoBehaviour
 {
 
     public float health = 100;
-    float startSpeed = 2f;
+    float startSpeed;
     public Image healthBar;
     public float maxHealth = 100f;
     public float speed = 2f;
     private void Start()
     {
-
+        startSpeed = speed;
     }
 
     private void update()
@@ -57,15 +57,15 @@ public class Enemy : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public void StartSlow(float duration, float slowValue)
+    public void StartSlow(float duration)
     {
         speed = startSpeed;
         StopCoroutine("GetSlow");
-        StartCoroutine(GetSlow(duration, slowValue));
+        StartCoroutine(GetSlow(duration));
     }
-    IEnumerator GetSlow(float duration, float slowValue)
+    IEnumerator GetSlow(float duration)
     {
-        speed -= slowValue;
+        speed -= speed/2;
         yield return new WaitForSeconds(duration);
         speed = startSpeed;
     }

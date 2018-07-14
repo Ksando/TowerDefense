@@ -51,7 +51,7 @@ public class TowerProjectileScr : MonoBehaviour
         switch (selfTower.type)
         {
             case (int)TowerType.FIRST_TOWER:
-                target.GetComponent<Enemy>().StartSlow(3, 1);
+                target.GetComponent<Enemy>().StartSlow(3);
                 target.GetComponent<Enemy>().TakeDamage(selfProjectile.damage);
                 break;
             case (int)TowerType.SECOND_TOWER:
