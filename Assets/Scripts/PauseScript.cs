@@ -11,13 +11,13 @@ public class PauseScript : MonoBehaviour {
 
     public GameObject pauseButton;
     public GameObject pauseMenu;
-    public GameObject settinsMenu;
+    public GameObject settingsMenu;
 
     void Start()
     {
        pauseButton.SetActive(true);
        pauseMenu.SetActive(false);
-       settinsMenu.SetActive(false);
+       settingsMenu.SetActive(false);
 
        Time.timeScale = 1f;
     }
@@ -40,8 +40,12 @@ public class PauseScript : MonoBehaviour {
     public void gameSettings()
     {
         pauseMenu.SetActive(false);
-        settinsMenu.SetActive(true);
-   
+        settingsMenu.SetActive(true);
+    }
+    public void confirmChanges()
+    {
+        settingsMenu.SetActive(false);
+        pauseMenu.SetActive(true);
     }
 
 }

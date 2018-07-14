@@ -12,10 +12,8 @@ public class UI : MonoBehaviour {
     Text money;
     Text currentWave;
     WaveSpawner wave;
-    public GameObject speedGame;
-    public GameObject control;
-    public GameObject pauseGame;
-    public GameObject normalGame;
+    public GameObject speedGameButton;
+ 
 
 	void Start ()
     {
@@ -32,19 +30,36 @@ public class UI : MonoBehaviour {
         money.text = player.getMoney().ToString() + "$";
         currentWave.text = "Current wave is " + wave.getWaveIndex().ToString();
     }
-    //Доделать!!
     public void fastGame()
     {
-        Time.timeScale = 2f;
+        Time.timeScale = 2;
        
     }
     public void normalizeGame()
     {
-        Time.timeScale = 1f;
+        Time.timeScale = 1;
         
     }
     public void PauseGame()
     {
-        Time.timeScale = 0f;
+        Time.timeScale = 0;
+    }
+    public void gameSpeed()//Меняет скорость игры поочередно
+    {
+        if (Time.timeScale == 1)
+        {
+            fastGame();
+            speedGameButton.GetComponentInChildren<Text>().text = "2x speed";
+        }
+        else if (Time.timeScale == 2)
+        {
+            PauseGame();
+            speedGameButton.GetComponentInChildren<Text>().text = "zero speed";
+        }
+        else if (Time.timeScale == 0)
+        {
+            normalizeGame();
+            speedGameButton.GetComponentInChildren<Text>().text = "Normal speed";
+        }
     }
 }

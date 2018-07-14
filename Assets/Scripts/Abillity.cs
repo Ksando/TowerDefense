@@ -10,6 +10,7 @@ public class Abillity : MonoBehaviour
 {
     public Player player;
     public Multipliers multi;
+    private string className;
     Vector2 position;
     private float [] previousMultiSpeed = new float[3];
     private float [] previousMultiDamage = new float[5];
@@ -22,7 +23,7 @@ public class Abillity : MonoBehaviour
     {
         player = GetComponent<Player>();
         multi = GetComponent<Multipliers>();
-       
+        this.className = player.getClassName();
     }
     // Update is called once per frame
     void Update()
@@ -32,9 +33,9 @@ public class Abillity : MonoBehaviour
             position = Input.mousePosition;
     }
         
-    public void setAbilltys(string value)
+    public void useAbility()
     {
-        switch(value)
+        switch(this.className)
         {
             case "General":
                 generalAbillitys();
@@ -42,14 +43,15 @@ public class Abillity : MonoBehaviour
             case "Scientist":
                 scientistAbillitys();
                 break;
-         case "Engineer":
+            case "Engineer":
                 engineerAbillitys();
-               break;
+                break;
             default:
+                Debug.Log("No class");
                 break;
         }
     }
-
+    //Тестовые способки
     public void engineerAbillitys()
     {
         Debug.Log("Я у мамы инженер");
@@ -58,9 +60,8 @@ public class Abillity : MonoBehaviour
     public void scientistAbillitys()
     {
       
-        Debug.Log("Учоный");
+        Debug.Log("Ученый");
     }
-
     public void generalAbillitys()
     {
        

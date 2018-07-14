@@ -11,9 +11,6 @@ public class Player : MonoBehaviour
 {
     private string className;
     private int money;
-    public Abillity abillity;
-    public Text moneyText;
-
     public int getMoney()
     {
         return money;
@@ -50,7 +47,6 @@ public class Player : MonoBehaviour
     void Start ()
     {
         className = GameObject.Find("Settings").GetComponent<Settings>().className;
-        abillity = GetComponent<Abillity>();
     }
 	
 	// Update is called once per frame
