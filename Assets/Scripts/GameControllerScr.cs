@@ -51,13 +51,13 @@ public class GameControllerScr : MonoBehaviour
     private void Awake()
     {
         AllTowers.Add(new Tower(0, 3, 1, "TowerSprites/DiTower"));
-        AllTowers.Add(new Tower(1, 4, 3, "TowerSprites/SiTower"));
-        AllTowers.Add(new Tower(2, 5, 6, "TowerSprites/FiTower"));
-        AllTowers.Add(new Tower(3, 3, .7f, "TowerSprites/SniTower"));
+        AllTowers.Add(new Tower(1, 3, 3, "TowerSprites/SiTower"));
+        AllTowers.Add(new Tower(2, 2, .7f, "TowerSprites/FiTower"));
+        AllTowers.Add(new Tower(3, 5, 5, "TowerSprites/SniTower"));
 
-        AllProjectiles.Add(new TowerProjectile(10, 20, "ProjectilesSprites/DiProjectile"));
-        AllProjectiles.Add(new TowerProjectile(0, 20, "ProjectilesSprites/SiProjectile"));
-        AllProjectiles.Add(new TowerProjectile(40, 20, "ProjectilesSprites/FiProjectile"));
-        AllProjectiles.Add(new TowerProjectile(10, 20, "ProjectilesSprites/SniProjectile"));
+        AllProjectiles.Add(new TowerProjectile(10, 5, "ProjectilesSprites/DiProjectile"));
+        AllProjectiles.Add(new TowerProjectile(10, 5, "ProjectilesSprites/SiProjectile"));
+        AllProjectiles.Add(new TowerProjectile(40, 2, "ProjectilesSprites/FiProjectile"));
+        AllProjectiles.Add(new TowerProjectile(10, 10, "ProjectilesSprites/SniProjectile"));
     }
 }

@@ -14,6 +14,9 @@ TagManager:
   - HeavyMutant
   - BossMutant
   - SlowingTower
+  - RapidTower
+  - SniperTower
+  - AoeTower
   layers:
   - Default
   - TransparentFX
