@@ -35,7 +35,9 @@ public class TowerProjectile
 public enum TowerType
 {
     FIRST_TOWER,
-    SECOND_TOWER
+    SECOND_TOWER,
+    THIRD_TOWER,
+    FOURTH_TOWER
 }
 
 
@@ -50,8 +52,12 @@ public class GameControllerScr : MonoBehaviour
     {
         AllTowers.Add(new Tower(0, 3, 1, "TowerSprites/DiTower"));
         AllTowers.Add(new Tower(1, 4, 3, "TowerSprites/SiTower"));
+        AllTowers.Add(new Tower(2, 5, 6, "TowerSprites/FiTower"));
+        AllTowers.Add(new Tower(3, 3, .7f, "TowerSprites/SniTower"));
 
         AllProjectiles.Add(new TowerProjectile(10, 20, "ProjectilesSprites/DiProjectile"));
-        AllProjectiles.Add(new TowerProjectile(5, 2, "ProjectilesSprites/SiProjectile"));
+        AllProjectiles.Add(new TowerProjectile(0, 20, "ProjectilesSprites/SiProjectile"));
+        AllProjectiles.Add(new TowerProjectile(40, 20, "ProjectilesSprites/FiProjectile"));
+        AllProjectiles.Add(new TowerProjectile(10, 20, "ProjectilesSprites/SniProjectile"));
     }
 }

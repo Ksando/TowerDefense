@@ -57,6 +57,12 @@ public class TowerProjectileScr : MonoBehaviour
             case (int)TowerType.SECOND_TOWER:
                 target.GetComponent<Enemy>().TakeDamage(selfProjectile.damage);
                 break;
+            case (int)TowerType.THIRD_TOWER:
+                target.GetComponent<Enemy>().TakeDamage(selfProjectile.damage);
+                break;
+            case (int)TowerType.FOURTH_TOWER:
+                target.GetComponent<Enemy>().TakeDamage(selfProjectile.damage);
+                break;
         }
 
         Destroy(gameObject);
