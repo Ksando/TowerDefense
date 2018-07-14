@@ -1,4 +1,7 @@
-﻿using System.Collections;
+﻿//
+// Created by absdspr
+//
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -38,9 +41,7 @@ public class PauseScript : MonoBehaviour {
     {
         pauseMenu.SetActive(false);
         settinsMenu.SetActive(true);
-        
-        
-
+   
     }
 
 }

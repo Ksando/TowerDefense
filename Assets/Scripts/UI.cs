@@ -12,7 +12,10 @@ public class UI : MonoBehaviour {
     Text money;
     Text currentWave;
     WaveSpawner wave;
-    public GameObject pausePanel;
+    public GameObject speedGame;
+    public GameObject control;
+    public GameObject pauseGame;
+    public GameObject normalGame;
 
 	void Start ()
     {
@@ -20,6 +23,7 @@ public class UI : MonoBehaviour {
         money = GameObject.Find("Money").GetComponent<Text>();
         wave = GameObject.Find("WaveSpawner").GetComponent<WaveSpawner>();
         currentWave = GameObject.Find("currentWaveText").GetComponent<Text>();
+
     }
 
     // Update is called once per frame
@@ -27,5 +31,20 @@ public class UI : MonoBehaviour {
     {
         money.text = player.getMoney().ToString() + "$";
         currentWave.text = "Current wave is " + wave.getWaveIndex().ToString();
+    }
+    //Доделать!!
+    public void fastGame()
+    {
+        Time.timeScale = 2f;
+       
+    }
+    public void normalizeGame()
+    {
+        Time.timeScale = 1f;
+        
+    }
+    public void PauseGame()
+    {
+        Time.timeScale = 0f;
     }
 }
