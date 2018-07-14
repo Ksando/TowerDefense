@@ -28,28 +28,28 @@ public class Base : MonoBehaviour {
         {
             if (BaseHealth > 0)
             {
-                StartCoroutine("WaitingFunction111");
+                StartCoroutine(WaitingFunction111(1));
             }
         }
         if (col.gameObject.tag == "FastMutant")
         {
             if (BaseHealth > 0)
             {
-                StartCoroutine("WaitingFunction111");
+                StartCoroutine(WaitingFunction111(1));
             }
         }
         if (col.gameObject.tag == "HeavyMutant")
         {
             if (BaseHealth > 0)
             {
-                StartCoroutine("WaitingFunction111");
+                StartCoroutine(WaitingFunction111(2));
             }
         }
         if (col.gameObject.tag == "BossMutant")
         {
             if (BaseHealth > 0)
             {
-                StartCoroutine("WaitingFunction111");
+                StartCoroutine(WaitingFunction111(10));
             }
         }
 
@@ -61,14 +61,14 @@ public class Base : MonoBehaviour {
     }
 
 
-    IEnumerator WaitingFunction111()
+    IEnumerator WaitingFunction111(int dmg)
     {
         while (BaseHealth > 0)
         {
-            Debug.Log("Mutant just hit the base!");
-            BaseHealth -= 10;
+            Debug.Log("Mutant just hit the base with damage:");
+            Debug.Log(dmg);
+            BaseHealth -= dmg;
             BaseHealthBar.fillAmount = BaseHealth / maxBaseHealth;
-            print(Time.time);
             yield return new WaitForSecondsRealtime(5);
         }
         if (BaseHealth <= 0)
