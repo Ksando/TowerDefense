@@ -257,9 +257,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 639829cfbc728234dbf50eb650f693a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  health: 200
   healthBar: {fileID: 114719809285052270}
-  maxHealth: 100
+  maxHealth: 200
+  speed: 1
 --- !u!114 &114959148528093208
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -289,7 +290,6 @@ MonoBehaviour:
   - {fileID: 4963321850003312, guid: 02ccdf6c6116d7c48becbff1fd4fce61, type: 2}
   - {fileID: 4963321850003312, guid: 034a0230a64c07a44973b11fe2c93c0b, type: 2}
   currentWayPoint: 0
-  speed: 1
 --- !u!212 &212374747603731166
 SpriteRenderer:
   m_ObjectHideFlags: 1

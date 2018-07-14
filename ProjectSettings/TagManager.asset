@@ -13,6 +13,7 @@ TagManager:
   - FastMutant
   - HeavyMutant
   - BossMutant
+  - SlowingTower
   layers:
   - Default
   - TransparentFX
