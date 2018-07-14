@@ -2,13 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TowerProjectileScr : MonoBehaviour {
+public class TowerProjectileScr : MonoBehaviour
+{
 
     Transform target;
-    public TowerProjectile selfProjectile; 
+    TowerProjectile selfProjectile;
+    public Tower selfTower;
+    GameControllerScr gcs;
 
     private void Start()
     {
+        gcs = FindObjectOfType<GameControllerScr>();
+
+        selfProjectile = gcs.AllProjectiles[selfTower.type];
+
         GetComponent<SpriteRenderer>().sprite = selfProjectile.Spr;
     }
     void Update()
@@ -27,8 +34,7 @@ public class TowerProjectileScr : MonoBehaviour {
         {
             if (Vector2.Distance(transform.position, target.position) < .1f)
             {
-                target.GetComponent<Enemy>().TakeDamage(selfProjectile.damage);
-                Destroy(gameObject);
+                Hit();
             }
             else
             {
@@ -39,4 +45,21 @@ public class TowerProjectileScr : MonoBehaviour {
         else
             Destroy(gameObject);
     }
+
+    void Hit()
+    {
+        switch (selfTower.type)
+        {
+            case (int)TowerType.FIRST_TOWER:
+                target.GetComponent<Enemy>().StartSlow(3, 1);
+                target.GetComponent<Enemy>().TakeDamage(selfProjectile.damage);
+                break;
+            case (int)TowerType.SECOND_TOWER:
+                target.GetComponent<Enemy>().TakeDamage(selfProjectile.damage);
+                break;
+        }
+
+        Destroy(gameObject);
+    }
+
 }

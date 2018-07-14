@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class Tower
 {
+    public int type;
     public float Range, Cooldown, CurrCooldown = 0;
     public Sprite Spr;
 
-    public Tower(float Range, float cd, string path)
+    public Tower(int type, float Range, float cd, string path)
     {
+        this.type = type;
         this.Range = Range;
         Cooldown = cd;
         Spr = Resources.Load<Sprite>(path);
@@ -38,15 +40,16 @@ public enum TowerType
 
 
 
-public class GameControllerScr : MonoBehaviour {
+public class GameControllerScr : MonoBehaviour
+{
 
     public List<Tower> AllTowers = new List<Tower>();
     public List<TowerProjectile> AllProjectiles = new List<TowerProjectile>();
 
     private void Awake()
     {
-        AllTowers.Add(new Tower(3, 1, "TowerSprites/DiTower"));
-        AllTowers.Add(new Tower(4, 3, "TowerSprites/SiTower"));
+        AllTowers.Add(new Tower(0, 3, 1, "TowerSprites/DiTower"));
+        AllTowers.Add(new Tower(1, 4, 3, "TowerSprites/SiTower"));
 
         AllProjectiles.Add(new TowerProjectile(10, 20, "ProjectilesSprites/DiProjectile"));
         AllProjectiles.Add(new TowerProjectile(5, 2, "ProjectilesSprites/SiProjectile"));
