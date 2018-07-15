@@ -11,9 +11,11 @@ public class Enemy : MonoBehaviour
     public Image healthBar;
     public float maxHealth = 100f;
     public float speed = 2f;
+    Player player;
     private void Start()
     {
         startSpeed = speed;
+        player = GameObject.Find("Main Camera").GetComponent<Player>();
     }
 
     private void update()
@@ -54,6 +56,7 @@ public class Enemy : MonoBehaviour
 
     private void Die()
     {
+        player.addMoney(50);
         Destroy(gameObject);
     }
 

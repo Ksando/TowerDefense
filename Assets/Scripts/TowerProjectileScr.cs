@@ -18,6 +18,7 @@ public class TowerProjectileScr : MonoBehaviour
         selfProjectile = gcs.AllProjectiles[selfTower.type];
         basicDamage = selfProjectile.damage;
         GetComponent<SpriteRenderer>().sprite = selfProjectile.Spr;
+        
     }
     void Update()
     {
@@ -52,17 +53,17 @@ public class TowerProjectileScr : MonoBehaviour
         switch (selfTower.type)
         {
             case (int)TowerType.FIRST_TOWER:
-                target.GetComponent<Enemy>().TakeDamage(selfProjectile.damage * multi.getDamageMulti(gameObject.tag));
+                target.GetComponent<Enemy>().TakeDamage(selfProjectile.damage * multi.getDamageMulti("DefaultTower"));
                 break;
             case (int)TowerType.SECOND_TOWER:
                 target.GetComponent<Enemy>().StartSlow(3);
-                target.GetComponent<Enemy>().TakeDamage(selfProjectile.damage * multi.getDamageMulti(gameObject.tag));
+                target.GetComponent<Enemy>().TakeDamage(selfProjectile.damage * multi.getDamageMulti("SlowingTower"));
                 break;
             case (int)TowerType.THIRD_TOWER:
-                target.GetComponent<Enemy>().TakeDamage(selfProjectile.damage * multi.getDamageMulti(gameObject.tag));
+                target.GetComponent<Enemy>().TakeDamage(selfProjectile.damage * multi.getDamageMulti("RapidTower"));
                 break;
             case (int)TowerType.FOURTH_TOWER:
-                target.GetComponent<Enemy>().TakeDamage(selfProjectile.damage * multi.getDamageMulti(gameObject.tag));
+                target.GetComponent<Enemy>().TakeDamage(selfProjectile.damage * multi.getDamageMulti("SniperTower"));
                 break;
         }
 

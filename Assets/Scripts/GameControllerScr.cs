@@ -34,10 +34,10 @@ public class TowerProjectile
 
 public enum TowerType
 {
-    FIRST_TOWER, //Slow
-    SECOND_TOWER,//Simple
-    THIRD_TOWER,//Fast
-    FOURTH_TOWER//Sniper
+    FIRST_TOWER, 
+    SECOND_TOWER,
+    THIRD_TOWER,
+    FOURTH_TOWER
 }
 
 
