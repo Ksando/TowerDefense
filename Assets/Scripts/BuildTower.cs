@@ -13,9 +13,11 @@ public class BuildTower : MonoBehaviour {
     public GameObject buildMenu;
     Transform tilePosition;
 
+    float costMod = 1;
+
 	// Use this for initialization
 	void Start () {
-        
+        GetComponent<Abillity>().getBuyMulti();
 	}
 	
 	// Update is called once per frame
@@ -54,12 +56,28 @@ public class BuildTower : MonoBehaviour {
 
     public void buildTower(int t)
     {
+        buildMenu.SetActive(false);
         switch(t)
         {
             case 1:
-                buildMenu.SetActive(false);
-                if(GetComponent<Player>().buySomething(100))
+                if (GetComponent<Player>().buySomething(50 * (int)costMod))  
                     Instantiate(towerSimple, tilePosition.position, tilePosition.rotation);
+                break;
+            case 2:
+                if (GetComponent<Player>().buySomething(100 * (int)costMod)) 
+                    Instantiate(towerSlow, tilePosition.position, tilePosition.rotation);
+                break;
+            case 3:
+                if (GetComponent<Player>().buySomething(100 * (int)costMod)) 
+                    Instantiate(towerAOE, tilePosition.position, tilePosition.rotation);
+                break;
+            case 4:
+                if (GetComponent<Player>().buySomething(120 * (int)costMod)) 
+                    Instantiate(towerSniper, tilePosition.position, tilePosition.rotation);
+                break;
+            case 5:
+                if (GetComponent<Player>().buySomething(90 * (int)costMod)) 
+                    Instantiate(towerFast, tilePosition.position, tilePosition.rotation);
                 break;
             default:
                 break;
