@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 public class BuildTower : MonoBehaviour {
@@ -15,9 +16,15 @@ public class BuildTower : MonoBehaviour {
 
     float costMod = 1;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         costMod = GetComponent<Abillity>().getBuyMulti();
+        GameObject.Find("Simple").GetComponent<Text>().text = (int)(50f * costMod) + "$";
+        GameObject.Find("Slow").GetComponent<Text>().text = (int)(100f * costMod) + "$";
+        GameObject.Find("Sniper").GetComponent<Text>().text = (int)(100f * costMod) + "$";
+        GameObject.Find("AOE").GetComponent<Text>().text = (int)(120f * costMod) + "$";
+        GameObject.Find("Fast").GetComponent<Text>().text = (int)(90f * costMod) + "$";
+        buildMenu.SetActive(false);
 	}
 	
 	// Update is called once per frame
@@ -26,6 +33,8 @@ public class BuildTower : MonoBehaviour {
         {
             RaycastHit2D rayHit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
 
+            //if (rayHit.transform != null)
+                //Debug.Log(rayHit.transform.name);
             //Debug.Log(mousePos + " || " + Input.mousePosition.x * (1920f/Screen.width));
             if (rayHit.transform != null && rayHit.transform.tag == "TowerPlacement")
             {
@@ -33,7 +42,7 @@ public class BuildTower : MonoBehaviour {
                     return;
                 
                 buildMenu.SetActive(true);
-                Vector2 menuPos = Input.mousePosition;
+                /*Vector2 menuPos = Input.mousePosition;
                 if (Input.mousePosition.x * (1920f / Screen.width) < 280)
                     menuPos.x = 280 / (1920f / Screen.width);
                 else if (Input.mousePosition.x * (1920f / Screen.width) > 1640)
@@ -43,7 +52,7 @@ public class BuildTower : MonoBehaviour {
                     menuPos.y = 920 / (1080f / Screen.height);
                 else if (Input.mousePosition.x * (1920f / Screen.width) < 260)
                     menuPos.y = 160 / (1080f / Screen.height);
-                buildMenu.transform.position = menuPos;
+                buildMenu.transform.position = menuPos;*/
 
                 tilePosition = rayHit.transform;
             }
@@ -60,23 +69,23 @@ public class BuildTower : MonoBehaviour {
         switch(t)
         {
             case 1:
-                if (GetComponent<Player>().buySomething((int)(50 * costMod)))  
+                if (GetComponent<Player>().buySomething((int)(50f * costMod)))  
                     Instantiate(towerSimple, tilePosition.position, tilePosition.rotation);
                 break;
             case 2:
-                if (GetComponent<Player>().buySomething((int)(100 * costMod))) 
+                if (GetComponent<Player>().buySomething((int)(100f * costMod))) 
                     Instantiate(towerSlow, tilePosition.position, tilePosition.rotation);
                 break;
             case 3:
-                if (GetComponent<Player>().buySomething((int)(100 * costMod))) 
-                    Instantiate(towerAOE, tilePosition.position, tilePosition.rotation);
-                break;
-            case 4:
-                if (GetComponent<Player>().buySomething((int)(120 * costMod))) 
+                if (GetComponent<Player>().buySomething((int)(100f * costMod))) 
                     Instantiate(towerSniper, tilePosition.position, tilePosition.rotation);
                 break;
+            case 4:
+                if (GetComponent<Player>().buySomething((int)(120f * costMod))) 
+                    Instantiate(towerAOE, tilePosition.position, tilePosition.rotation);
+                break;
             case 5:
-                if (GetComponent<Player>().buySomething((int)(90 * costMod))) 
+                if (GetComponent<Player>().buySomething((int)(90f * costMod))) 
                     Instantiate(towerFast, tilePosition.position, tilePosition.rotation);
                 break;
             default:
