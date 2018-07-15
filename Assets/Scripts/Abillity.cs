@@ -12,7 +12,7 @@ public class Abillity : MonoBehaviour
     public Multipliers multi;
     private string className;
     Vector2 position;
-    private int abilityCouldown;
+    private float abilityCouldown;
     private float [] previousMultiSpeed = new float[3];
     private float [] previousMultiDamage = new float[5];
     private float [] previousMultiReload = new float[5];
@@ -41,7 +41,7 @@ public class Abillity : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        this.abilityCouldown -= Time.deltaTime;
     }
         
     public void useAbility()
@@ -49,39 +49,41 @@ public class Abillity : MonoBehaviour
         switch(this.className)
         {
             case "General":
-                generalAbillitys();
+                if (this.abilityCouldown <= 0)
+                {
+                    StartCoroutine("rocketPunch");
+                    abilityCouldown = 30;
+                }
+                else
+                    Debug.Log("cd"+this.abilityCouldown);
                 break;
             case "Scientist":
-                scientistAbillitys();
+                if (this.abilityCouldown <= 0)
+                {
+                    StartCoroutine("cryogen");
+                    abilityCouldown = 15;
+                }
+                else
+                    Debug.Log("cd" + this.abilityCouldown);
                 break;
             case "Engineer":
-                engineerAbillitys();
+                if (this.abilityCouldown <= 0)
+                {
+                    StartCoroutine("openCore");
+                    abilityCouldown = 25;
+                }
+                else
+                    Debug.Log("cd" + this.abilityCouldown);
                 break;
             default:
                 Debug.Log("No class");
                 break;
         }
     }
-    //Тестовые способки
-    public void engineerAbillitys()
-    {
-        Debug.Log("Я у мамы инженер");
-        Debug.Log(abilityCouldown);
-    }
-
-    public void scientistAbillitys()
-    {
-      
-        Debug.Log("Ученый");
-        Debug.Log(abilityCouldown);
-    }
-    public void generalAbillitys()
-    {
-        Debug.Log("Я генерал");
-    }
     //Активаня спосбность инженера
     IEnumerator openCore()
     {
+        Debug.Log("Я у мамы инженер");
         //Получаем старые значения множителей
         for (int i = 0; i < towers.Length; i++)
         {
@@ -94,7 +96,7 @@ public class Abillity : MonoBehaviour
             multi.setDamageMulti(1.5f * previousMultiDamage[i], towers[i]);
             multi.setReloadMulti(1.5f * previousMultiReload[i], towers[i]); 
         }
-        yield return new WaitForSecondsRealtime(5);
+        yield return new WaitForSecondsRealtime(10);
         //
         //Возвращаем их обратно
         for (int i = 0; i < towers.Length; i++)
@@ -102,19 +104,22 @@ public class Abillity : MonoBehaviour
             multi.setDamageMulti(previousMultiDamage[i], towers[i]);
             multi.setReloadMulti(previousMultiReload[i], towers[i]);
         }
+       
 
     }
     //Ракетный удар
     public void rocketPunch()   
     {
-        foreach(GameObject enemy in GameObject.FindGameObjectsWithTag("enemy"))
+        Debug.Log("Я генерал");
+        foreach (GameObject enemy in GameObject.FindGameObjectsWithTag("enemy"))
         {
            enemy.GetComponent<Enemy>().TakeDamage(200);
         }
 
     }
-    public void cryogen()
+    IEnumerator cryogen()
     {
+        Debug.Log("Ученый");
         //Получаем старые значения множителей
         for (int i = 0; i < enemys.Length; i++)
         {
@@ -124,7 +129,8 @@ public class Abillity : MonoBehaviour
         {
             multi.setSpeedMulti(0, enemys[i]);
         }
-        for(int i = 0; i <enemys.Length; i++)
+        yield return new WaitForSecondsRealtime(5);
+        for (int i = 0; i <enemys.Length; i++)
         {
             multi.setSpeedMulti(previousMultiSpeed[i], enemys[i]);
         }
