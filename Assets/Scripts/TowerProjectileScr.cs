@@ -22,7 +22,6 @@ public class TowerProjectileScr : MonoBehaviour
     void Update()
     {
         Move();
-        selfProjectile.damage = basicDamage * multi.getDamageMulti(gameObject.tag); 
     }
 
     public void SetTarget(Transform enemy)
@@ -53,17 +52,17 @@ public class TowerProjectileScr : MonoBehaviour
         switch (selfTower.type)
         {
             case (int)TowerType.FIRST_TOWER:
-                target.GetComponent<Enemy>().TakeDamage(selfProjectile.damage);
+                target.GetComponent<Enemy>().TakeDamage(selfProjectile.damage * multi.getDamageMulti(gameObject.tag));
                 break;
             case (int)TowerType.SECOND_TOWER:
                 target.GetComponent<Enemy>().StartSlow(3);
-                target.GetComponent<Enemy>().TakeDamage(selfProjectile.damage);
+                target.GetComponent<Enemy>().TakeDamage(selfProjectile.damage * multi.getDamageMulti(gameObject.tag));
                 break;
             case (int)TowerType.THIRD_TOWER:
-                target.GetComponent<Enemy>().TakeDamage(selfProjectile.damage);
+                target.GetComponent<Enemy>().TakeDamage(selfProjectile.damage * multi.getDamageMulti(gameObject.tag));
                 break;
             case (int)TowerType.FOURTH_TOWER:
-                target.GetComponent<Enemy>().TakeDamage(selfProjectile.damage);
+                target.GetComponent<Enemy>().TakeDamage(selfProjectile.damage * multi.getDamageMulti(gameObject.tag));
                 break;
         }
 

@@ -30,7 +30,6 @@ public class TowerScript : MonoBehaviour
 
     private void Update()
     {
-        selfTower.CurrCooldown = selfTower.Cooldown * multi.getReloadMulti(gameObject.tag);
         if (selfTower.CurrCooldown > 0f)
             selfTower.CurrCooldown -= Time.deltaTime;
     }
@@ -69,7 +68,7 @@ public class TowerScript : MonoBehaviour
     }
     void Shoot(Transform enemy)
     {
-        selfTower.CurrCooldown = selfTower.Cooldown;
+        selfTower.CurrCooldown = selfTower.Cooldown * multi.getReloadMulti(gameObject.tag);
         GameObject proj = Instantiate(Projectile);
         proj.GetComponent<TowerProjectileScr>().selfTower = selfTower;
         proj.transform.position = transform.position;
