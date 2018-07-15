@@ -20,10 +20,9 @@ public class Enemy : MonoBehaviour
         player = GameObject.Find("Main Camera").GetComponent<Player>();
     }
 
-    private void update()
+    private void Update()
     {
         speed = startSpeed * multi.getSpeedMulti(gameObject.tag);
-        Debug.Log(gameObject.tag);
     }
 
     public void TakeDamage(float damage)
