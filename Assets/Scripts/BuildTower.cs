@@ -60,6 +60,8 @@ public class BuildTower : MonoBehaviour {
                 buildMenu.SetActive(false);
                 if(GetComponent<Player>().buySomething(100))
                     Instantiate(towerSimple, tilePosition.position, tilePosition.rotation);
+                
+                    
                 break;
             default:
                 break;

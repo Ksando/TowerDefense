@@ -3,8 +3,10 @@
 //
 using UnityEngine;
 
+
 public class Player : MonoBehaviour
 {
+    UI userInterface;
     private string className;
     private int money;
     public int getMoney()
@@ -31,7 +33,7 @@ public class Player : MonoBehaviour
             this.addMoney(-value);
             return true;
         }
-        Debug.Log("no money");
+        userInterface.noMoneyNotification();
         return false;
     }
 
@@ -40,8 +42,9 @@ public class Player : MonoBehaviour
     {
         money = 150;
     }
-    void Start ()
+    private void Start ()
     {
         className = GameObject.Find("Settings").GetComponent<Settings>().className;
+        userInterface = GameObject.Find("Main UI").GetComponent<UI>();
     }
 }
