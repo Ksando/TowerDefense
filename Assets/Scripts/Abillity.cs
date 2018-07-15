@@ -11,13 +11,16 @@ public class Abillity : MonoBehaviour
     public Player player;
     public Multipliers multi;
     private string className;
-    Vector2 position;
     private float abilityCouldown;
-    private float [] previousMultiSpeed = new float[3];
-    private float [] previousMultiDamage = new float[5];
-    private float [] previousMultiReload = new float[5];
-    private string[] towers = {"TowerSimple","TowerSlow","TowerSniper","TowerAOE","TowerFast" };
-    private string[] enemys = { "Simple", "Fast", "Tank" };
+    private float[] previousMultiSpeed = new float[3];
+    private float[] previousMultiDamage = new float[5];
+    private float[] previousMultiReload = new float[5];
+    private string[] towerMulti = { "TowerSimple", "TowerSlow", "TowerSniper", "TowerAOE", "TowerFast" };
+    private string[] enemyMulti = { "Simple", "Fast", "Tank" };
+    private string[] enemyTags = {"DefaultMutant", "FastMutant", "HeavyMutant","BossMutant"};
+                
+                
+            
 
     // Use this for initialization
     void Start ()
@@ -85,24 +88,24 @@ public class Abillity : MonoBehaviour
     {
         Debug.Log("Я у мамы инженер");
         //Получаем старые значения множителей
-        for (int i = 0; i < towers.Length; i++)
+        for (int i = 0; i < towerMulti.Length; i++)
         {
-            previousMultiDamage[i] = multi.getDamageMulti(towers[i]);
-            previousMultiReload[i] = multi.getReloadMulti(towers[i]);
+            previousMultiDamage[i] = multi.getDamageMulti(towerMulti[i]);
+            previousMultiReload[i] = multi.getReloadMulti(towerMulti[i]);
         }
         //Увеличиваем их на n времени
-        for (int i = 0; i < towers.Length; i ++)
+        for (int i = 0; i < towerMulti.Length; i ++)
         {
-            multi.setDamageMulti(1.5f * previousMultiDamage[i], towers[i]);
-            multi.setReloadMulti(1.5f * previousMultiReload[i], towers[i]); 
+            multi.setDamageMulti(1.5f * previousMultiDamage[i], towerMulti[i]);
+            multi.setReloadMulti(1.5f * previousMultiReload[i], towerMulti[i]); 
         }
         yield return new WaitForSecondsRealtime(10);
         //
         //Возвращаем их обратно
-        for (int i = 0; i < towers.Length; i++)
+        for (int i = 0; i < towerMulti.Length; i++)
         {
-            multi.setDamageMulti(previousMultiDamage[i], towers[i]);
-            multi.setReloadMulti(previousMultiReload[i], towers[i]);
+            multi.setDamageMulti(previousMultiDamage[i], towerMulti[i]);
+            multi.setReloadMulti(previousMultiReload[i], towerMulti[i]);
         }
        
 
@@ -115,24 +118,32 @@ public class Abillity : MonoBehaviour
         {
            enemy.GetComponent<Enemy>().TakeDamage(200);
         }
+        foreach (string tag in enemyTags)
+        {
+            GameObject[] enemy = GameObject.FindGameObjectsWithTag(tag);
+            for (int i = 0; i < enemy.Length; i++)
+            {
+                enemy[i].GetComponent<Enemy>().TakeDamage(200);
+            }
+        }
 
     }
     IEnumerator cryogen()
     {
         Debug.Log("Ученый");
         //Получаем старые значения множителей
-        for (int i = 0; i < enemys.Length; i++)
+        for (int i = 0; i < enemyMulti.Length; i++)
         {
-            previousMultiSpeed[i] = multi.getSpeedMulti(enemys[i]);
+            previousMultiSpeed[i] = multi.getSpeedMulti(enemyMulti[i]);
         }
-        for (int i = 0; i < enemys.Length; i++)
+        for (int i = 0; i < enemyMulti.Length; i++)
         {
-            multi.setSpeedMulti(0, enemys[i]);
+            multi.setSpeedMulti(0, enemyMulti[i]);
         }
         yield return new WaitForSecondsRealtime(5);
-        for (int i = 0; i <enemys.Length; i++)
+        for (int i = 0; i <enemyMulti.Length; i++)
         {
-            multi.setSpeedMulti(previousMultiSpeed[i], enemys[i]);
+            multi.setSpeedMulti(previousMultiSpeed[i], enemyMulti[i]);
         }
     }
     
