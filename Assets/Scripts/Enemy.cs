@@ -12,9 +12,11 @@ public class Enemy : MonoBehaviour
     public float maxHealth = 100f;
     public float speed = 2f;
     Player player;
+    Multipliers multi;
     private void Start()
     {
-        startSpeed = speed;
+        multi = GameObject.Find("Main Camera").GetComponent<Multipliers>();
+        startSpeed = speed * multi.getSpeedMulti(gameObject.tag);
         player = GameObject.Find("Main Camera").GetComponent<Player>();
     }
 

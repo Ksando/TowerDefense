@@ -15,7 +15,7 @@ public class Abillity : MonoBehaviour
     private float[] previousMultiDamage = new float[5];
     private float[] previousMultiReload = new float[5];
     private string[] towerMulti = { "DefaultTower", "SlowingTower", "SniperTower", "TowerAOE", "RapidTower" };
-    private string[] enemyMulti = { "Simple", "Fast", "Tank" };
+    private string[] enemyMulti = { "DefaultMutant", "FastMutant", "HeavyMutant" };
     private string[] enemyTags = {"DefaultMutant", "FastMutant", "HeavyMutant","BossMutant"};
     private float buyMulti;
     private float upgradeMulti;
@@ -41,17 +41,17 @@ public class Abillity : MonoBehaviour
         switch(this.className)
         {
             case "General":
-                abilityCouldown = 30;
+                abilityCouldown = 4;
                 buyMulti = 0.7f;
                 upgradeMulti = 1;
                 break;
             case "Scientist":
-                abilityCouldown = 15;
+                abilityCouldown = 4;
                 buyMulti = 1;
                 upgradeMulti = 0.6f;
                 break;
             case "Engineer":
-                abilityCouldown = 25;
+                abilityCouldown = 4;
                 buyMulti = 1;
                 upgradeMulti = 1;
                 break;
@@ -112,8 +112,8 @@ public class Abillity : MonoBehaviour
         //Увеличиваем их на n времени
         for (int i = 0; i < towerMulti.Length; i ++)
         {
-            multi.setDamageMulti(1.5f * previousMultiDamage[i], towerMulti[i]);
-            multi.setReloadMulti(1.5f * previousMultiReload[i], towerMulti[i]); 
+            multi.setDamageMulti(2f * previousMultiDamage[i], towerMulti[i]);
+            multi.setReloadMulti(0.5f * previousMultiReload[i], towerMulti[i]); 
         }
         yield return new WaitForSecondsRealtime(10);
         //
@@ -135,7 +135,7 @@ public class Abillity : MonoBehaviour
             GameObject[] enemy = GameObject.FindGameObjectsWithTag(tag);
             for (int i = 0; i < enemy.Length; i++)
             {
-                enemy[i].GetComponent<Enemy>().TakeDamage(200);
+                enemy[i].GetComponent<Enemy>().TakeDamage(60);
             }
         }
 
@@ -151,6 +151,10 @@ public class Abillity : MonoBehaviour
         for (int i = 0; i < enemyMulti.Length; i++)
         {
             multi.setSpeedMulti(0, enemyMulti[i]);
+        }
+        for (int i = 0; i < enemyMulti.Length; i++)
+        {
+            Debug.Log(multi.getSpeedMulti(enemyMulti[i]));
         }
         yield return new WaitForSecondsRealtime(5);
         for (int i = 0; i <enemyMulti.Length; i++)

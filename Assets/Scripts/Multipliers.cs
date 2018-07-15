@@ -83,11 +83,11 @@ public class Multipliers : MonoBehaviour
     {
         switch (monster)
         {
-            case "Simple":
+            case "DefaultMutant":
                 return speedMultiSimple;
-            case "Tank":
+            case "HeavyMutant":
                 return speedMultiTank;        
-            case "Fast":
+            case "FastMutant":
                 return speedMultiFast;        
             default:
                 return -1;
@@ -98,13 +98,13 @@ public class Multipliers : MonoBehaviour
     {
         switch (monster)
         {
-            case "Simple":
+            case "DefaultMutant":
                 speedMultiSimple = value;
                 break;
-            case "Tank":
+            case "HeavyMutant":
                 speedMultiTank = value;
                 break;
-            case "Fast":
+            case "FastMutant":
                 speedMultiFast = value;
                 break;
         }
