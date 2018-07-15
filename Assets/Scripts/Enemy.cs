@@ -16,12 +16,14 @@ public class Enemy : MonoBehaviour
     private void Start()
     {
         multi = GameObject.Find("Main Camera").GetComponent<Multipliers>();
-        startSpeed = speed * multi.getSpeedMulti(gameObject.tag);
+        startSpeed = speed;
         player = GameObject.Find("Main Camera").GetComponent<Player>();
     }
 
     private void update()
     {
+        speed = startSpeed * multi.getSpeedMulti(gameObject.tag);
+        Debug.Log(gameObject.tag);
     }
 
     public void TakeDamage(float damage)
