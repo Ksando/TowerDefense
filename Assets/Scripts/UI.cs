@@ -12,8 +12,8 @@ public class UI : MonoBehaviour {
     WaveSpawner wave;
     public GameObject speedGameButton;
     public GameObject useAbilltiyButton;
- 
-
+    public GameObject noMoney;
+  
 	void Start ()
     {
         player = GameObject.Find("Main Camera").GetComponent<Player>();
@@ -65,5 +65,12 @@ public class UI : MonoBehaviour {
             normalizeGame();
             speedGameButton.GetComponent<Image>().sprite = Resources.Load<Sprite>("UI/b2");
         }
+    }
+    public void noMoneyNotification()
+    {
+        noMoney.GetComponent<Text>().text = "Не хватает средств!";
+        Color tmp = noMoney.GetComponent<Text>().color;
+        tmp.a = 255f;
+        noMoney.GetComponent<Text>().color = tmp;
     }
 }

@@ -18,10 +18,19 @@ public class Abillity : MonoBehaviour
     private string[] enemyMulti = { "Simple", "Fast", "Tank" };
     private string[] enemyTags = {"DefaultMutant", "FastMutant", "HeavyMutant","BossMutant"};
     private float buyMulti;
-    private float upgrageMulti;
-                
-                
-            
+    private float upgradeMulti;
+    public float getBuyMulti()
+    {
+        return buyMulti;
+    }
+    public float getUpgradeMulti()
+    {
+        return upgradeMulti;
+    }
+
+
+
+
 
     // Use this for initialization
     void Start ()
@@ -34,17 +43,17 @@ public class Abillity : MonoBehaviour
             case "General":
                 abilityCouldown = 30;
                 buyMulti = 0.7f;
-                upgrageMulti = 1;
+                upgradeMulti = 1;
                 break;
             case "Scientist":
                 abilityCouldown = 15;
                 buyMulti = 1;
-                upgrageMulti = 0.6f;
+                upgradeMulti = 0.6f;
                 break;
             case "Engineer":
                 abilityCouldown = 25;
                 buyMulti = 1;
-                upgrageMulti = 1;
+                upgradeMulti = 1;
                 break;
         }
     }
