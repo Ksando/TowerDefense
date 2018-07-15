@@ -14,7 +14,7 @@ public class Abillity : MonoBehaviour
     private float[] previousMultiSpeed = new float[3];
     private float[] previousMultiDamage = new float[5];
     private float[] previousMultiReload = new float[5];
-    private string[] towerMulti = { "TowerSimple", "TowerSlow", "TowerSniper", "TowerAOE", "TowerFast" };
+    private string[] towerMulti = { "DefaultTower", "SlowingTower", "SniperTower", "TowerAOE", "RapidTower" };
     private string[] enemyMulti = { "Simple", "Fast", "Tank" };
     private string[] enemyTags = {"DefaultMutant", "FastMutant", "HeavyMutant","BossMutant"};
     private float buyMulti;
@@ -130,10 +130,6 @@ public class Abillity : MonoBehaviour
     public void rocketPunch()   
     {
         Debug.Log("Я генерал");
-        foreach (GameObject enemy in GameObject.FindGameObjectsWithTag("enemy"))
-        {
-           enemy.GetComponent<Enemy>().TakeDamage(200);
-        }
         foreach (string tag in enemyTags)
         {
             GameObject[] enemy = GameObject.FindGameObjectsWithTag(tag);

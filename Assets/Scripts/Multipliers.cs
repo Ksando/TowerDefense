@@ -113,19 +113,19 @@ public class Multipliers : MonoBehaviour
     {
         switch (something)
         {        
-            case "TowerSimple":
+            case "DefaultTower":
                 damageMultiTowerSimple = value;
                 break;
-            case "TowerSlow":
+            case "SlownigTower":
                 damageMultiTowerSlow = value;
                 break;
-            case "TowerSniper":
+            case "SniperTower":
                 damageMultiTowerSniper = value;
                 break;
             case "TowerAOE":
                 damageMultiTowerAOE = value;
                 break;
-            case "TowerFast":
+            case "RapidTower":
                 damageMultiTowerFast = value;
                 break;
         }
@@ -155,15 +155,15 @@ public class Multipliers : MonoBehaviour
                 return damageMultiTank;
             case "Fast":
                 return damageMultiFast;
-            case "TowerSimple":
+            case "DefaultTower":
                 return damageMultiTowerSlow;
-            case "TowerSlow":
+            case "SlownigTower":
                 return damageMultiTowerSlow;
-            case "TowerSniper":
+            case "SniperTower":
                 return damageMultiTowerSniper;
             case "TowerAOE":
                 return damageMultiTowerAOE;
-            case "TowerFast":
+            case "RapidTower":
                 return damageMultiTowerFast;
             default:
                 return -1;
@@ -174,19 +174,19 @@ public class Multipliers : MonoBehaviour
     {
         switch (something)
         {
-            case "TowerSimple":
+            case "DefaultTower":
                 reloadMultiTowerSimple = value;
                 break;
-            case "TowerSlow":
+            case "SlownigTower":
                 reloadMultiTowerSlow = value;
                 break;
-            case "TowerSniper":
+            case "SniperTower":
                 reloadMultiTowerSniper = value;
                 break;
             case "TowerAOE":
                 reloadMultiTowerAOE = value;
                 break;
-            case "TowerFast":
+            case "RapidTower":
                 reloadMultiTowerFast = value;
                 break;
         }
@@ -195,15 +195,15 @@ public class Multipliers : MonoBehaviour
     {
         switch(something)
         {
-            case "TowerSimple":
+            case "DefaultTower":
                 return reloadMultiTowerSimple;               
-            case "TowerSlow":
+            case "SlownigTower":
                 return reloadMultiTowerSlow;             
-            case "TowerSniper":
+            case "SniperTower":
                 return reloadMultiTowerSniper;            
             case "TowerAOE":
                 return reloadMultiTowerAOE;        
-            case "TowerFast":
+            case "RapidTower":
                 return reloadMultiTowerFast;
             default:
                 return -1;               

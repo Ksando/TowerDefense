@@ -49,7 +49,7 @@ public class GameControllerScr : MonoBehaviour
     public List<TowerProjectile> AllProjectiles = new List<TowerProjectile>();
     private void Awake()
     {
-        AllTowers.Add(new Tower(0, 3, 1, "TowerSprites /DiTower"));
+        AllTowers.Add(new Tower(0, 3, 1, "TowerSprites/DiTower"));
         AllTowers.Add(new Tower(1, 3 , 3, "TowerSprites/SiTower"));
         AllTowers.Add(new Tower(2, 2 , .7f, "TowerSprites/FiTower"));
         AllTowers.Add(new Tower(3, 5, 5, "TowerSprites/SniTower"));
