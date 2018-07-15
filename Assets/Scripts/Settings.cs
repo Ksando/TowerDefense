@@ -1,7 +1,6 @@
 ﻿/** Настройки игры. Автор - Максим **/
 
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 using UnityEngine.UI;
 
