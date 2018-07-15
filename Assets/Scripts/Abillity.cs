@@ -1,7 +1,6 @@
 ﻿//
 // Created by absdspr
 //
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,6 +17,8 @@ public class Abillity : MonoBehaviour
     private string[] towerMulti = { "TowerSimple", "TowerSlow", "TowerSniper", "TowerAOE", "TowerFast" };
     private string[] enemyMulti = { "Simple", "Fast", "Tank" };
     private string[] enemyTags = {"DefaultMutant", "FastMutant", "HeavyMutant","BossMutant"};
+    private float buyMulti;
+    private float upgrageMulti;
                 
                 
             
@@ -32,12 +33,18 @@ public class Abillity : MonoBehaviour
         {
             case "General":
                 abilityCouldown = 30;
+                buyMulti = 0.7f;
+                upgrageMulti = 1;
                 break;
             case "Scientist":
                 abilityCouldown = 15;
+                buyMulti = 1;
+                upgrageMulti = 0.6f;
                 break;
             case "Engineer":
                 abilityCouldown = 25;
+                buyMulti = 1;
+                upgrageMulti = 1;
                 break;
         }
     }
