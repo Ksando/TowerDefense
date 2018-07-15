@@ -62,6 +62,10 @@ public class BuildTower : MonoBehaviour {
             case 1:
                 if (GetComponent<Player>().buySomething((int)(50 * costMod)))  
                     Instantiate(towerSimple, tilePosition.position, tilePosition.rotation);
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1a5553a7b3ad02e8f423ff9173909941fc4de558
                 break;
             case 2:
                 if (GetComponent<Player>().buySomething((int)(100 * costMod))) 
