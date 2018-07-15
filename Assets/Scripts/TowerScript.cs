@@ -9,6 +9,8 @@ public class TowerScript : MonoBehaviour
     Tower selfTower;
     public TowerType selfType;
     GameControllerScr gcs;
+    public float basicCooldown;
+    Multipliers multi;
 
     string[] enemyTags =
              {
@@ -20,22 +22,24 @@ public class TowerScript : MonoBehaviour
     private void Start()
     {
         gcs = FindObjectOfType<GameControllerScr>();
-
+        multi = GameObject.Find("Main UI").GetComponent<Multipliers>();
         selfTower = gcs.AllTowers[(int)selfType];
         GetComponent<SpriteRenderer>().sprite = selfTower.Spr;
+        basicCooldown = selfTower.Cooldown;
 
         InvokeRepeating("SearchTarget", 0, .1f);
     }
 
     private void Update()
     {
-        if (selfTower.CurrCooldown > 0)
+        selfTower.Cooldown = basicCooldown * multi.getReloadMulti(gameObject.tag);
+        if (selfTower.CurrCooldown > 0f)
             selfTower.CurrCooldown -= Time.deltaTime;
     }
 
     bool CanShoot()
     {
-        if (selfTower.CurrCooldown <= 0)
+        if (selfTower.CurrCooldown <= 0f)
             return true;
         return false;
     }

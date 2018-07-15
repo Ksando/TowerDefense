@@ -9,18 +9,20 @@ public class TowerProjectileScr : MonoBehaviour
     TowerProjectile selfProjectile;
     public Tower selfTower;
     GameControllerScr gcs;
-
+    public float basicDamage;
+    Multipliers multi;
     private void Start()
     {
         gcs = FindObjectOfType<GameControllerScr>();
-
+        multi = GameObject.Find("Main UI").GetComponent<Multipliers>();
         selfProjectile = gcs.AllProjectiles[selfTower.type];
-
+        basicDamage = selfProjectile.damage;
         GetComponent<SpriteRenderer>().sprite = selfProjectile.Spr;
     }
     void Update()
     {
         Move();
+        selfProjectile.damage = basicDamage * multi.getDamageMulti(gameObject.tag); 
     }
 
     public void SetTarget(Transform enemy)
