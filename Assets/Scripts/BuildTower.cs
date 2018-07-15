@@ -17,7 +17,7 @@ public class BuildTower : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        GetComponent<Abillity>().getBuyMulti();
+        costMod = GetComponent<Abillity>().getBuyMulti();
 	}
 	
 	// Update is called once per frame
@@ -39,9 +39,9 @@ public class BuildTower : MonoBehaviour {
                 else if (Input.mousePosition.x * (1920f / Screen.width) > 1640)
                     menuPos.x = 1640 / (1920f / Screen.width);
 
-                if (Input.mousePosition.y * (1080f / Screen.height) > 920)
+                if (Input.mousePosition.y * (1080f / Screen.height) > 820)
                     menuPos.y = 920 / (1080f / Screen.height);
-                else if (Input.mousePosition.x * (1920f / Screen.width) < 160)
+                else if (Input.mousePosition.x * (1920f / Screen.width) < 260)
                     menuPos.y = 160 / (1080f / Screen.height);
                 buildMenu.transform.position = menuPos;
 
@@ -60,25 +60,23 @@ public class BuildTower : MonoBehaviour {
         switch(t)
         {
             case 1:
-                if (GetComponent<Player>().buySomething(50 * (int)costMod))  
+                if (GetComponent<Player>().buySomething((int)(50 * costMod)))  
                     Instantiate(towerSimple, tilePosition.position, tilePosition.rotation);
-                
-                    
                 break;
             case 2:
-                if (GetComponent<Player>().buySomething(100 * (int)costMod)) 
+                if (GetComponent<Player>().buySomething((int)(100 * costMod))) 
                     Instantiate(towerSlow, tilePosition.position, tilePosition.rotation);
                 break;
             case 3:
-                if (GetComponent<Player>().buySomething(100 * (int)costMod)) 
+                if (GetComponent<Player>().buySomething((int)(100 * costMod))) 
                     Instantiate(towerAOE, tilePosition.position, tilePosition.rotation);
                 break;
             case 4:
-                if (GetComponent<Player>().buySomething(120 * (int)costMod)) 
+                if (GetComponent<Player>().buySomething((int)(120 * costMod))) 
                     Instantiate(towerSniper, tilePosition.position, tilePosition.rotation);
                 break;
             case 5:
-                if (GetComponent<Player>().buySomething(90 * (int)costMod)) 
+                if (GetComponent<Player>().buySomething((int)(90 * costMod))) 
                     Instantiate(towerFast, tilePosition.position, tilePosition.rotation);
                 break;
             default:
