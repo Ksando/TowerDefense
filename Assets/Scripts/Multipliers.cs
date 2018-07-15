@@ -12,10 +12,6 @@ public class Multipliers : MonoBehaviour
     private float healthMultiFast;  //Множители хп врагов
     private float healthMultiTank;
 
-    private float moneyMultiSimple;
-    private float moneyMultiFast;  //Множители наград за врагов
-    private float moneyMultiTank;
-
     private float speedMultiSimple;
     private float speedMultiFast;    //Множители скорости врагов
     private float speedMultiTank;
@@ -36,26 +32,19 @@ public class Multipliers : MonoBehaviour
     private float reloadMultiTowerAOE;
     private float reloadMultiTowerFast;
 
-    private float rangeMultiTowerSimple;
-    private float rangeMultiTowerSlow;
-    private float rangeMultiTowerSniper;
-    private float rangeMultiTowerAOE;
-    private float rangeMultiTowerFast;
-
-    private float slowTimeMulti;
     //Геттеры и сеттеры
-    public void setHealthMulti(float value, string monster)
+    public void setHealthMulti( string monster)
     {
         switch(monster)
         {
             case "Simple":
-                healthMultiSimple = value;
+                healthMultiSimple = healthMultiSimple + healthMultiSimple * 0.1f;
                 break;
             case "Tank":
-                healthMultiTank = value;
+                healthMultiTank = healthMultiTank + healthMultiTank * 0.15f;
                 break;
             case "Fast":
-                healthMultiFast = value;
+                healthMultiFast = healthMultiSimple + healthMultiTank * 0.1f;
                 break;    
         }
     }
@@ -65,50 +54,44 @@ public class Multipliers : MonoBehaviour
         {
             case "Simple":
                 return healthMultiSimple;
-                break;
             case "Tank":
                 return healthMultiTank;
-                break;
             case "Fast":
                 return healthMultiFast;
-                break;
             default:
                 return -1;
-                break;
+              
         }
         
     }
-    public void setMoneyMulti(float value, string monster)
+    public void setSpeedMulti(string monster)
     {
         switch (monster)
         {
             case "Simple":
-                moneyMultiSimple = value;
+                speedMultiSimple = speedMultiSimple * 1;//Остается прежней
                 break;
             case "Tank":
-                moneyMultiTank = value;
+                speedMultiTank = speedMultiTank * 1;//Остается прежней
                 break;
             case "Fast":
-                moneyMultiFast = value;
+                speedMultiFast = speedMultiFast + speedMultiFast * 0.05f;
                 break;
         }
     }
-    public float getMoneyMulti(string monster)
+    public float getSpeedMulti(string monster)
     {
         switch (monster)
         {
             case "Simple":
-                return moneyMultiSimple;
-                break;
+                return speedMultiSimple;
             case "Tank":
-                return moneyMultiTank;
-                break;
+                return speedMultiTank;        
             case "Fast":
-                return moneyMultiFast;
-                break;
+                return speedMultiFast;        
             default:
                 return -1;
-                break;
+            
         }
     }
     public void setSpeedMulti(float value, string monster)
@@ -126,37 +109,10 @@ public class Multipliers : MonoBehaviour
                 break;
         }
     }
-    public float getSpeedMulti(string monster)
-    {
-        switch (monster)
-        {
-            case "Simple":
-                return speedMultiSimple;
-                break;
-            case "Tank":
-                return speedMultiTank;
-                break;
-            case "Fast":
-                return speedMultiFast;
-                break;
-            default:
-                return -1;
-                break;
-        }
-    }
     public void setDamageMulti(float value, string something)
     {
         switch (something)
-        {
-            case "Simple":
-                damageMultiSimple = value;
-                break;
-            case "Tank":
-                damageMultiTank = value;
-                break;
-            case "Fast":
-                damageMultiFast = value;
-                break;
+        {        
             case "TowerSimple":
                 damageMultiTowerSimple = value;
                 break;
@@ -174,84 +130,46 @@ public class Multipliers : MonoBehaviour
                 break;
         }
     }
+    public void setDamageMulti(string something)
+    {
+        switch (something)
+        {
+            case "Simple":
+                damageMultiSimple += 1;
+                break;
+            case "Tank":
+                damageMultiTank += 1;
+                break;
+            case "Fast":
+                damageMultiFast += 1;
+                break;
+        }
+    }
     public float getDamageMulti(string something)
     {
         switch (something)
         {
             case "Simple":
                 return damageMultiSimple;
-                break;
             case "Tank":
                 return damageMultiTank;
-                break;
             case "Fast":
                 return damageMultiFast;
-                break;
             case "TowerSimple":
                 return damageMultiTowerSlow;
-                break;
             case "TowerSlow":
                 return damageMultiTowerSlow;
-                break;
             case "TowerSniper":
                 return damageMultiTowerSniper;
-                break;
             case "TowerAOE":
                 return damageMultiTowerAOE;
-                break;
             case "TowerFast":
                 return damageMultiTowerFast;
             default:
                 return -1;
-                break;
         }
     }
-    public void setRangeMulti(float value, string something)
-    {
-        switch (something)
-        {
-            case "TowerSimple":
-                rangeMultiTowerSimple = value;
-                break;
-            case "TowerSlow":
-                rangeMultiTowerSlow = value;
-                break;
-            case "TowerSniper":
-                rangeMultiTowerSniper = value;
-                break;
-            case "TowerAOE":
-                rangeMultiTowerAOE = value;
-                break;
-            case "TowerFast":
-                rangeMultiTowerFast = value;
-                break;
-        }
-    }
-    public float getRangeMulti(string something)
-    {
-        switch (something)
-        {
-            case "TowerSimple":
-                return rangeMultiTowerSimple;
-                break;
-            case "TowerSlow":
-                return rangeMultiTowerSlow ;
-                break;
-            case "TowerSniper":
-                return rangeMultiTowerSniper;
-                break;
-            case "TowerAOE":
-                 return rangeMultiTowerAOE;
-                break;
-            case "TowerFast":
-                return rangeMultiTowerFast;
-                break;
-            default:
-                return -1;
-                break;
-                
-        }
-    }
+   
     public void setReloadMulti(float value, string something)
     {
         switch (something)
@@ -278,38 +196,47 @@ public class Multipliers : MonoBehaviour
         switch(something)
         {
             case "TowerSimple":
-                return reloadMultiTowerSimple;
-                break;
+                return reloadMultiTowerSimple;               
             case "TowerSlow":
-                return reloadMultiTowerSlow;
-                break;
+                return reloadMultiTowerSlow;             
             case "TowerSniper":
-                return reloadMultiTowerSniper;
-                break;
+                return reloadMultiTowerSniper;            
             case "TowerAOE":
-                return reloadMultiTowerAOE;
-                break;
+                return reloadMultiTowerAOE;        
             case "TowerFast":
                 return reloadMultiTowerFast;
-                break;
             default:
-                return -1;
-                break;
+                return -1;               
         }
-    }
-    public void setSlowTimeMulti(float value)
-    {
-        slowTimeMulti = value;
-    }
-    public float getSlowTimeMulti()
-    {
-        return slowTimeMulti;
     }
     // Use this for initialization
     void Start ()
     {
-		
-	}
+        healthMultiFast = 1;
+        healthMultiSimple = 1;
+        healthMultiTank = 1;
+
+        speedMultiFast = 1;
+        speedMultiSimple = 1;
+        speedMultiTank = 1;
+
+        damageMultiFast = 1;
+        damageMultiSimple = 1;
+        damageMultiTank = 1;
+
+        damageMultiTowerSimple = 1;
+        damageMultiTowerSlow = 1;
+        damageMultiTowerSniper = 1;
+        damageMultiTowerAOE = 1;
+        damageMultiTowerFast = 1;
+
+        reloadMultiTowerAOE = 1;
+        reloadMultiTowerFast = 1;
+        reloadMultiTowerSimple = 1;
+        reloadMultiTowerSniper = 1;
+        reloadMultiTowerSlow = 1;
+
+    }
 	// Update is called once per frame
 	void Update ()
     {
