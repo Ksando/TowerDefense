@@ -3,6 +3,8 @@
 //
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
+using System.Collections.Generic;
 
 public class UI : MonoBehaviour {
 
@@ -66,11 +68,17 @@ public class UI : MonoBehaviour {
             speedGameButton.GetComponent<Image>().sprite = Resources.Load<Sprite>("UI/b2");
         }
     }
-    public void noMoneyNotification()
+    public IEnumerator noMoneyNotification()
     {
         noMoney.GetComponent<Text>().text = "Не хватает средств!";
         Color tmp = noMoney.GetComponent<Text>().color;
         tmp.a = 255f;
         noMoney.GetComponent<Text>().color = tmp;
+        yield return new WaitForSecondsRealtime(1);
+        for (float i = 5; i >= 0; i -= Time.deltaTime)
+        {
+            tmp.a -= 255f/5f;
+            noMoney.GetComponent<Text>().color = tmp;
+        }
     }
 }

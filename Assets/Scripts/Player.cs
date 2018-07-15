@@ -33,7 +33,7 @@ public class Player : MonoBehaviour
             this.addMoney(-value);
             return true;
         }
-        userInterface.noMoneyNotification();
+        userInterface.StartCoroutine("noMoneyNotification");
         return false;
     }
 
