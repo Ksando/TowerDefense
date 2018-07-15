@@ -32,33 +32,12 @@ public class Enemy : MonoBehaviour
     void CheckIsAlive()
     {
         if (health <= 0)
-            Destroy(gameObject);
-    }
-
-    void OnCollisionEnter2D(Collision2D col)
-    {
-        if (col.gameObject.tag == "tower")
         {
-            Debug.Log("TAGGG");
-            if (health > 0)
-            {
-                //decrease enemy health
-                health -= 10;
-                healthBar.fillAmount = health / maxHealth;
-                if (health <= 0)
-                {
-                    Die();
-                }
-            }
+            Destroy(gameObject);
+            player.addMoney(50);
         }
-    }
+     }
 
-
-    private void Die()
-    {
-        player.addMoney(50);
-        Destroy(gameObject);
-    }
 
     public void StartSlow(float duration)
     {
