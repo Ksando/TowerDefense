@@ -10,7 +10,7 @@ public class MovementPath : MonoBehaviour
     public int currentWayPoint = 0;
     Transform targetWayPoint;
 
-    public float speed = 4f;
+    //public float speed = 4f;
 
     // Use this for initialization
     void Start()
@@ -32,7 +32,7 @@ public class MovementPath : MonoBehaviour
 
     void walk()
     {
-        transform.position = Vector3.MoveTowards(transform.position, targetWayPoint.position, speed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, targetWayPoint.position, GetComponent<Enemy>().speed * Time.deltaTime);
 
         if (transform.position == targetWayPoint.position)
         {

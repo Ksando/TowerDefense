@@ -12,6 +12,7 @@ public class Abillity : MonoBehaviour
     public Multipliers multi;
     private string className;
     Vector2 position;
+    private int abilityCouldown;
     private float [] previousMultiSpeed = new float[3];
     private float [] previousMultiDamage = new float[5];
     private float [] previousMultiReload = new float[5];
@@ -24,13 +25,23 @@ public class Abillity : MonoBehaviour
         player = GetComponent<Player>();
         multi = GetComponent<Multipliers>();
         this.className = player.getClassName();
+        switch(this.className)
+        {
+            case "General":
+                abilityCouldown = 30;
+                break;
+            case "Scientist":
+                abilityCouldown = 15;
+                break;
+            case "Engineer":
+                abilityCouldown = 25;
+                break;
+        }
     }
     // Update is called once per frame
     void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.Mouse0))
-            position = Input.mousePosition;
     }
         
     public void useAbility()
@@ -55,20 +66,21 @@ public class Abillity : MonoBehaviour
     public void engineerAbillitys()
     {
         Debug.Log("Я у мамы инженер");
+        Debug.Log(abilityCouldown);
     }
 
     public void scientistAbillitys()
     {
       
         Debug.Log("Ученый");
+        Debug.Log(abilityCouldown);
     }
     public void generalAbillitys()
     {
-       
         Debug.Log("Я генерал");
     }
     //Активаня спосбность инженера
-    public void openCore()
+    IEnumerator openCore()
     {
         //Получаем старые значения множителей
         for (int i = 0; i < towers.Length; i++)
@@ -80,8 +92,9 @@ public class Abillity : MonoBehaviour
         for (int i = 0; i < towers.Length; i ++)
         {
             multi.setDamageMulti(1.5f * previousMultiDamage[i], towers[i]);
-            multi.setReloadMulti(1.5f * previousMultiReload[i], towers[i]);
+            multi.setReloadMulti(1.5f * previousMultiReload[i], towers[i]); 
         }
+        yield return new WaitForSecondsRealtime(5);
         //
         //Возвращаем их обратно
         for (int i = 0; i < towers.Length; i++)
@@ -96,13 +109,7 @@ public class Abillity : MonoBehaviour
     {
         foreach(GameObject enemy in GameObject.FindGameObjectsWithTag("enemy"))
         {
-           
-            float distance = Vector2.Distance(position, enemy.transform.position); //Проверка растояния, входит ли враг в область поражения
-            Debug.Log(distance);
-            if(distance <= 645)
-            { 
-                enemy.GetComponent<Enemy>().TakeDamage(200);
-            }
+           enemy.GetComponent<Enemy>().TakeDamage(200);
         }
 
     }

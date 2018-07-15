@@ -233,6 +233,7 @@ MonoBehaviour:
   health: 1200
   healthBar: {fileID: 114725958369502750}
   maxHealth: 1200
+  speed: 0.3
 --- !u!114 &114635826505351034
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -262,7 +263,6 @@ MonoBehaviour:
   - {fileID: 4963321850003312, guid: 02ccdf6c6116d7c48becbff1fd4fce61, type: 2}
   - {fileID: 4963321850003312, guid: 034a0230a64c07a44973b11fe2c93c0b, type: 2}
   currentWayPoint: 0
-  speed: 0.5
 --- !u!114 &114725958369502750
 MonoBehaviour:
   m_ObjectHideFlags: 1

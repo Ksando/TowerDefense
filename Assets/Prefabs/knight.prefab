@@ -155,9 +155,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
-  reward: 10
   healthBar: {fileID: 114371158104574740}
   maxHealth: 100
+  speed: 2
 --- !u!114 &114215336610235104
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -290,7 +290,6 @@ MonoBehaviour:
   - {fileID: 4963321850003312, guid: 02ccdf6c6116d7c48becbff1fd4fce61, type: 2}
   - {fileID: 4963321850003312, guid: 034a0230a64c07a44973b11fe2c93c0b, type: 2}
   currentWayPoint: 0
-  speed: 5
 --- !u!212 &212866833865386272
 SpriteRenderer:
   m_ObjectHideFlags: 1

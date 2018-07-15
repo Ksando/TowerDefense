@@ -1,11 +1,7 @@
 ﻿//
 // Created by absdspr
 //
-using System.Collections;
-using System.Collections.Generic;
-using System;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -48,10 +44,4 @@ public class Player : MonoBehaviour
     {
         className = GameObject.Find("Settings").GetComponent<Settings>().className;
     }
-	
-	// Update is called once per frame
-	void Update ()
-    {
-        
-	}
 }

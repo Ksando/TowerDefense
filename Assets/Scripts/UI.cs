@@ -13,6 +13,7 @@ public class UI : MonoBehaviour {
     Text currentWave;
     WaveSpawner wave;
     public GameObject speedGameButton;
+    public GameObject useAbilltiyButton;
  
 
 	void Start ()
@@ -21,7 +22,12 @@ public class UI : MonoBehaviour {
         money = GameObject.Find("Money").GetComponent<Text>();
         wave = GameObject.Find("WaveSpawner").GetComponent<WaveSpawner>();
         currentWave = GameObject.Find("currentWaveText").GetComponent<Text>();
-
+        if(player.getClassName() == "General")
+            useAbilltiyButton.GetComponent<Image>().sprite = Resources.Load<Sprite>("UI/b5");
+        else if(player.getClassName() == "Scientist")
+            useAbilltiyButton.GetComponent<Image>().sprite = Resources.Load<Sprite>("UI/b4");
+        else if(player.getClassName() == "Engineer")
+            useAbilltiyButton.GetComponent<Image>().sprite = Resources.Load<Sprite>("UI/b6");
     }
 
     // Update is called once per frame
@@ -32,34 +38,34 @@ public class UI : MonoBehaviour {
     }
     public void fastGame()
     {
-        Time.timeScale = 2;
+        Time.timeScale = 2f;
        
     }
     public void normalizeGame()
     {
-        Time.timeScale = 1;
+        Time.timeScale = 1f;
         
     }
     public void PauseGame()
     {
-        Time.timeScale = 0;
+        Time.timeScale = 0f;
     }
     public void gameSpeed()//Меняет скорость игры поочередно
     {
         if (Time.timeScale == 1)
         {
             fastGame();
-            speedGameButton.GetComponentInChildren<Text>().text = "2x speed";
+            speedGameButton.GetComponent<Image>().sprite =Resources.Load<Sprite>("UI/b3") ;
         }
         else if (Time.timeScale == 2)
         {
             PauseGame();
-            speedGameButton.GetComponentInChildren<Text>().text = "zero speed";
+            speedGameButton.GetComponent<Image>().sprite = Resources.Load<Sprite>("UI/b1");
         }
         else if (Time.timeScale == 0)
         {
             normalizeGame();
-            speedGameButton.GetComponentInChildren<Text>().text = "Normal speed";
+            speedGameButton.GetComponent<Image>().sprite = Resources.Load<Sprite>("UI/b2");
         }
     }
 }
