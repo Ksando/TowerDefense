@@ -14,7 +14,7 @@ public class TowerProjectileScr : MonoBehaviour
     private void Start()
     {
         gcs = FindObjectOfType<GameControllerScr>();
-        multi = GameObject.Find("Main UI").GetComponent<Multipliers>();
+        multi = GameObject.Find("Main Camera").GetComponent<Multipliers>();
         selfProjectile = gcs.AllProjectiles[selfTower.type];
         basicDamage = selfProjectile.damage;
         GetComponent<SpriteRenderer>().sprite = selfProjectile.Spr;

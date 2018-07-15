@@ -47,10 +47,8 @@ public class GameControllerScr : MonoBehaviour
 
     public List<Tower> AllTowers = new List<Tower>();
     public List<TowerProjectile> AllProjectiles = new List<TowerProjectile>();
-    private Multipliers multi;
     private void Awake()
     {
-        multi = GameObject.Find("Main UI").GetComponent<Multipliers>();
         AllTowers.Add(new Tower(0, 3, 1, "TowerSprites /DiTower"));
         AllTowers.Add(new Tower(1, 3 , 3, "TowerSprites/SiTower"));
         AllTowers.Add(new Tower(2, 2 , .7f, "TowerSprites/FiTower"));
