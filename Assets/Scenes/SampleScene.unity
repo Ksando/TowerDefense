@@ -535,6 +535,80 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!1 &34973267
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 34973270}
+  - component: {fileID: 34973269}
+  - component: {fileID: 34973268}
+  m_Layer: 5
+  m_Name: cooldown
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &34973268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 34973267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 50
+    m_FontStyle: 1
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 50
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 
+--- !u!222 &34973269
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 34973267}
+--- !u!224 &34973270
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 34973267}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.000002, y: 1.000002, z: 1.000002}
+  m_Children: []
+  m_Father: {fileID: 1724731296}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -58, y: -323}
+  m_SizeDelta: {x: 1102, y: 73.2}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &68950311
 GameObject:
   m_ObjectHideFlags: 0
@@ -1581,7 +1655,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 9.45, y: 121.999954}
+  m_AnchoredPosition: {x: 6, y: 100.4}
   m_SizeDelta: {x: 532.6, y: 21.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &134636387
@@ -2136,7 +2210,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 9.45, y: -0.00002861}
+  m_AnchoredPosition: {x: 9.4501, y: -19}
   m_SizeDelta: {x: 525.7, y: 21.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &154225121
@@ -12887,7 +12961,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1024766311
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12956,6 +13030,8 @@ MonoBehaviour:
   pauseButton: {fileID: 796463457}
   pauseMenu: {fileID: 1024766310}
   settingsMenu: {fileID: 972637769}
+  soundVolume: {fileID: 154225121}
+  musicVolume: {fileID: 134636387}
 --- !u!1 &1024788945
 GameObject:
   m_ObjectHideFlags: 0
@@ -21399,6 +21475,7 @@ RectTransform:
   - {fileID: 25127666}
   - {fileID: 972637770}
   - {fileID: 2079654691}
+  - {fileID: 34973270}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -21421,6 +21498,7 @@ MonoBehaviour:
   speedGameButton: {fileID: 1929177493}
   useAbilltiyButton: {fileID: 198236421}
   noMoney: {fileID: 2079654688}
+  cooldown: {fileID: 34973267}
 --- !u!1 &1736612799
 GameObject:
   m_ObjectHideFlags: 0

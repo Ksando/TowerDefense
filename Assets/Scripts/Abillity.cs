@@ -9,8 +9,10 @@ public class Abillity : MonoBehaviour
 {
     public Player player;
     public Multipliers multi;
+    private Base mainBase;
+    UI userInterface;
     private string className;
-    private float abilityCouldown;
+    private float abillityCooldown;
     private float[] previousMultiSpeed = new float[3];
     private float[] previousMultiDamage = new float[5];
     private float[] previousMultiReload = new float[5];
@@ -27,6 +29,10 @@ public class Abillity : MonoBehaviour
     {
         return upgradeMulti;
     }
+    public float getAbillityCooldown()
+    {
+        return abillityCooldown;
+    }
 
 
 
@@ -37,21 +43,22 @@ public class Abillity : MonoBehaviour
     {
         player = GetComponent<Player>();
         multi = GetComponent<Multipliers>();
-        this.className = player.getClassName();
-        switch(this.className)
+        userInterface = GameObject.Find("Main UI").GetComponent<UI>();
+        className = player.getClassName();
+        switch(className)
         {
             case "General":
-                abilityCouldown = 4;
+                abillityCooldown = 30;
                 buyMulti = 0.7f;
                 upgradeMulti = 1;
                 break;
             case "Scientist":
-                abilityCouldown = 4;
+                abillityCooldown = 15;
                 buyMulti = 1;
                 upgradeMulti = 0.6f;
                 break;
             case "Engineer":
-                abilityCouldown = 4;
+                abillityCooldown = 25;
                 buyMulti = 1;
                 upgradeMulti = 1;
                 break;
@@ -60,39 +67,45 @@ public class Abillity : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        this.abilityCouldown -= Time.deltaTime;
-    }
-        
+       abillityCooldown -= Time.deltaTime;
+        if(className == "Engineer")
+        {
+            if(mainBase.BaseHealth<100)
+            {
+                healBase();
+            }
+        }
+    } 
     public void useAbility()
     {
-        switch(this.className)
+        switch(className)
         {
             case "General":
-                if (this.abilityCouldown <= 0)
+                if (abillityCooldown <= 0)
                 {
                     StartCoroutine("rocketPunch");
-                    abilityCouldown = 30;
+                    abillityCooldown = 30;
                 }
                 else
-                    Debug.Log("cd"+this.abilityCouldown);
+                    userInterface.StartCoroutine("abillityCooldown");
                 break;
             case "Scientist":
-                if (this.abilityCouldown <= 0)
+                if (abillityCooldown <= 0)
                 {
                     StartCoroutine("cryogen");
-                    abilityCouldown = 15;
+                    abillityCooldown = 15;
                 }
                 else
-                    Debug.Log("cd" + this.abilityCouldown);
+                    userInterface.StartCoroutine("abillityCooldown");
                 break;
             case "Engineer":
-                if (this.abilityCouldown <= 0)
+                if (abillityCooldown <= 0)
                 {
                     StartCoroutine("openCore");
-                    abilityCouldown = 25;
+                    abillityCooldown = 25;
                 }
                 else
-                    Debug.Log("cd" + this.abilityCouldown);
+                    userInterface.StartCoroutine("abillityCooldown");
                 break;
             default:
                 Debug.Log("No class");
@@ -162,9 +175,11 @@ public class Abillity : MonoBehaviour
             multi.setSpeedMulti(previousMultiSpeed[i], enemyMulti[i]);
         }
     }
-    
+    IEnumerator healBase()
+    {
+        mainBase.BaseHealth += 0.5f;
+        yield return new WaitForSecondsRealtime(2);
 
-
-
+    }
 
 }

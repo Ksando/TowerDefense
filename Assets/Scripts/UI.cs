@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
+using System;
 
 public class UI : MonoBehaviour {
 
@@ -12,13 +13,16 @@ public class UI : MonoBehaviour {
     Text money;
     Text currentWave;
     WaveSpawner wave;
+    Abillity abillity;
     public GameObject speedGameButton;
     public GameObject useAbilltiyButton;
     public GameObject noMoney;
+    public GameObject cooldown;
   
 	void Start ()
     {
         player = GameObject.Find("Main Camera").GetComponent<Player>();
+        abillity = GameObject.Find("Main Camera").GetComponent<Abillity>();
         money = GameObject.Find("Money").GetComponent<Text>();
         wave = GameObject.Find("WaveSpawner").GetComponent<WaveSpawner>();
         currentWave = GameObject.Find("currentWaveText").GetComponent<Text>();
@@ -79,6 +83,19 @@ public class UI : MonoBehaviour {
         {
             tmp.a -= 255f/5f;
             noMoney.GetComponent<Text>().color = tmp;
+        }
+    }
+    public IEnumerator abillityCooldown()
+    {
+        cooldown.GetComponent<Text>().text = "Перезарядка способности, осталось "+Math.Round(abillity.getAbillityCooldown()).ToString()+" сек.";
+        Color tmp = cooldown.GetComponent<Text>().color;
+        tmp.a = 255f;
+        cooldown.GetComponent<Text>().color = tmp;
+        yield return new WaitForSecondsRealtime(1);
+        for (float i = 5; i >= 0; i -= Time.deltaTime)
+        {
+            tmp.a -= 255f / 15f;
+            cooldown.GetComponent<Text>().color = tmp;
         }
     }
 }

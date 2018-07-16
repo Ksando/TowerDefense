@@ -9,17 +9,19 @@ public class Base : MonoBehaviour {
     public float BaseHealth = 100;
     public Image BaseHealthBar;
     public float maxBaseHealth = 100f;
+    private string className;
 
 
 
     // Use this for initialization
-    void Start () {
-		
+    void Start ()
+    {
 	}
 
     // Update is called once per frame
-    void Update()  {
-      
+    void Update()
+    {
+     
     }
 
     void OnCollisionEnter2D(Collision2D col)
