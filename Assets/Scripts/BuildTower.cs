@@ -78,4 +78,14 @@ public class BuildTower : MonoBehaviour {
                 break;
         }
     }
+
+	public void upgradeTower()
+	{
+
+	}
+
+	public void sellTower()
+	{
+
+	}
 }
