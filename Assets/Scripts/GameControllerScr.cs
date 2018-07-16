@@ -80,18 +80,18 @@ public class GameControllerScr : MonoBehaviour
         AllProjectiles.Add(new TowerProjectile(10, 0, "ProjectilesSprites/SiProjectile"));
         AllProjectiles.Add(new TowerProjectile(10, 2, "ProjectilesSprites/FiProjectile"));
         AllProjectiles.Add(new TowerProjectile(10, 8, "ProjectilesSprites/SniProjectile"));
-        AllProjectiles.Add(new TowerProjectile(5, 4, "ProjectilesSprites/SniProjectile"));
+        AllProjectiles.Add(new TowerProjectile(5, 4, "ProjectilesSprites/AoeProjectile"));
 
         AllProjectiles.Add(new TowerProjectile(10, 6, "ProjectilesSprites/DiProjectile"));
         AllProjectiles.Add(new TowerProjectile(10, 0, "ProjectilesSprites/SiProjectile"));
         AllProjectiles.Add(new TowerProjectile(10, 3, "ProjectilesSprites/FiProjectile"));
-        AllProjectiles.Add(new TowerProjectile(10, 12, "ProjectilesSprites/SniProjectile"));
-        AllProjectiles.Add(new TowerProjectile(5, 6, "ProjectilesSprites/SniProjectile"));
+        AllProjectiles.Add(new TowerProjectile(15, 12, "ProjectilesSprites/SniProjectile"));
+        AllProjectiles.Add(new TowerProjectile(5, 6, "ProjectilesSprites/AoeProjectile"));
 
         AllProjectiles.Add(new TowerProjectile(10, 7, "ProjectilesSprites/DiProjectile"));
         AllProjectiles.Add(new TowerProjectile(10, 0, "ProjectilesSprites/SiProjectile"));
         AllProjectiles.Add(new TowerProjectile(10, 4, "ProjectilesSprites/FiProjectile"));
-        AllProjectiles.Add(new TowerProjectile(10, 14, "ProjectilesSprites/SniProjectile"));
-        AllProjectiles.Add(new TowerProjectile(5, 6, "ProjectilesSprites/SniProjectile"));
+        AllProjectiles.Add(new TowerProjectile(15, 14, "ProjectilesSprites/SniProjectile"));
+        AllProjectiles.Add(new TowerProjectile(5, 6, "ProjectilesSprites/AoeProjectile"));
     }
 }

@@ -65,6 +65,29 @@ public class TowerProjectileScr : MonoBehaviour
             case (int)TowerType.FOURTH_TOWER:
                 target.GetComponent<Enemy>().TakeDamage(selfProjectile.damage * multi.getDamageMulti("SniperTower"));
                 break;
+            case (int)TowerType.FIFTH_TOWER:
+                string[] enemyTags =
+                 {
+                     "DefaultMutant",
+                     "FastMutant",
+                     "HeavyMutant",
+                     "BossMutant"
+                 };
+
+                foreach (string tag in enemyTags)
+                {
+                    GameObject[] enemy = GameObject.FindGameObjectsWithTag(tag);
+                    for (int i = 0; i < enemy.Length; i++)
+                    {
+                        float CurrDistance = Vector2.Distance(transform.position, enemy[i].transform.position);
+
+                        if (CurrDistance <= 1.5f)
+                        {
+                            enemy[i].GetComponent<Enemy>().TakeDamage(selfProjectile.damage * multi.getDamageMulti("AoeTower"));
+                        }
+                    }
+                }
+                break;
         }
 
         Destroy(gameObject);
