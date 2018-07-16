@@ -19323,10 +19323,26 @@ MonoBehaviour:
   waves:
   - enemy:
     - {fileID: 1417626100950600, guid: 19f2ac41cc54d8142b84b1c313a81a0b, type: 2}
+    - {fileID: 1417626100950600, guid: 19f2ac41cc54d8142b84b1c313a81a0b, type: 2}
+    - {fileID: 1417626100950600, guid: 19f2ac41cc54d8142b84b1c313a81a0b, type: 2}
+    - {fileID: 1417626100950600, guid: 19f2ac41cc54d8142b84b1c313a81a0b, type: 2}
+    - {fileID: 1417626100950600, guid: 19f2ac41cc54d8142b84b1c313a81a0b, type: 2}
+    - {fileID: 1417626100950600, guid: 19f2ac41cc54d8142b84b1c313a81a0b, type: 2}
+    - {fileID: 1417626100950600, guid: 19f2ac41cc54d8142b84b1c313a81a0b, type: 2}
+    - {fileID: 1417626100950600, guid: 19f2ac41cc54d8142b84b1c313a81a0b, type: 2}
     - {fileID: 1790198764608876, guid: 85a8a81b3e245a640b4c0b97f189eeb9, type: 2}
+    - {fileID: 1790198764608876, guid: 85a8a81b3e245a640b4c0b97f189eeb9, type: 2}
+    - {fileID: 1790198764608876, guid: 85a8a81b3e245a640b4c0b97f189eeb9, type: 2}
+    - {fileID: 1790198764608876, guid: 85a8a81b3e245a640b4c0b97f189eeb9, type: 2}
+    rate: 0.5
+  - enemy:
+    - {fileID: 1073481168722602, guid: 77b486d84cf91ae46acd1525b11dcd37, type: 2}
+    - {fileID: 1073481168722602, guid: 77b486d84cf91ae46acd1525b11dcd37, type: 2}
+    - {fileID: 1073481168722602, guid: 77b486d84cf91ae46acd1525b11dcd37, type: 2}
+    - {fileID: 1073481168722602, guid: 77b486d84cf91ae46acd1525b11dcd37, type: 2}
     - {fileID: 1073481168722602, guid: 77b486d84cf91ae46acd1525b11dcd37, type: 2}
     - {fileID: 1154244992661832, guid: 96eb44167c41d4d4e9a495cf1c4937d8, type: 2}
-    rate: 1
+    rate: 0.2
   spawnPoint: {fileID: 250575509}
   timeBetweenWaves: 30
   waveCountdownText: {fileID: 1064813610}
