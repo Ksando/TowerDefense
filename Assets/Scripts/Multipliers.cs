@@ -31,6 +31,7 @@ public class Multipliers : MonoBehaviour
     private float reloadMultiTowerSniper;
     private float reloadMultiTowerAOE;
     private float reloadMultiTowerFast;
+    private float speedMultiBoss;
 
     //Геттеры и сеттеры
     public void setHealthMulti( string monster)
@@ -77,6 +78,7 @@ public class Multipliers : MonoBehaviour
             case "Fast":
                 speedMultiFast = speedMultiFast + speedMultiFast * 0.05f;
                 break;
+            
         }
     }
     public float getSpeedMulti(string monster)
@@ -88,7 +90,9 @@ public class Multipliers : MonoBehaviour
             case "HeavyMutant":
                 return speedMultiTank;        
             case "FastMutant":
-                return speedMultiFast;        
+                return speedMultiFast;
+            case "BossMutant":
+                return speedMultiBoss;
             default:
                 return -1;
             
@@ -106,6 +110,9 @@ public class Multipliers : MonoBehaviour
                 break;
             case "FastMutant":
                 speedMultiFast = value;
+                break;
+            case "BossMutant":
+                speedMultiBoss = value;
                 break;
         }
     }
@@ -219,6 +226,7 @@ public class Multipliers : MonoBehaviour
         speedMultiFast = 1;
         speedMultiSimple = 1;
         speedMultiTank = 1;
+        speedMultiBoss = 1;
 
         damageMultiFast = 1;
         damageMultiSimple = 1;

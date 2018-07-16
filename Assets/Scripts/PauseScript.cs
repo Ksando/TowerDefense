@@ -13,8 +13,8 @@ public class PauseScript : MonoBehaviour {
     public GameObject pauseButton;
     public GameObject pauseMenu;
     public GameObject settingsMenu;
-    Slider soundVolume; // Slider2
-    Slider musicVolume; // Slider1
+    public Slider soundVolume;
+    public Slider musicVolume; 
     Settings settings;
 
     void Start()
@@ -23,8 +23,6 @@ public class PauseScript : MonoBehaviour {
         pauseMenu.SetActive(false);
         settingsMenu.SetActive(false);
         settings = GameObject.Find("Settings").GetComponent<Settings>();
-        soundVolume = GameObject.Find("Slider2").GetComponent<Slider>();
-        musicVolume = GameObject.Find("Slider1").GetComponent<Slider>();
     }
     public void PauseGame()
     {
