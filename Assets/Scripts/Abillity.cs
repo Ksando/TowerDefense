@@ -49,13 +49,13 @@ public class Abillity : MonoBehaviour
         {
             case "General":
                 abillityCooldown = 30;
-                buyMulti = 0.7f;
+                buyMulti = 0.9f;
                 upgradeMulti = 1;
                 break;
             case "Scientist":
                 abillityCooldown = 15;
                 buyMulti = 1;
-                upgradeMulti = 0.6f;
+                upgradeMulti = 0.9f;
                 break;
             case "Engineer":
                 abillityCooldown = 25;
