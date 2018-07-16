@@ -65,7 +65,7 @@ public class Base : MonoBehaviour {
 
     IEnumerator WaitingFunction111(int dmg)
     {
-        while (BaseHealth > 0)
+        while (BaseHealth > 0 && gameObject != null)
         {
             Debug.Log("Mutant just hit the base with damage:");
             Debug.Log(dmg);
