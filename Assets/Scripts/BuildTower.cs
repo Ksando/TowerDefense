@@ -12,6 +12,7 @@ public class BuildTower : MonoBehaviour {
     public GameObject towerAOE;
     public GameObject towerFast;
     public GameObject buildMenu;
+    public GameObject upgradeMenu;
     Transform tilePosition;
 
     float costMod = 1;
