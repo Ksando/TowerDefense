@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     UI userInterface;
     private string className;
     private int money;
+    private int score;
     public int getMoney()
     {
         return money;
@@ -25,6 +26,10 @@ public class Player : MonoBehaviour
     public void setClassName(string value)
     {
         className = value;
+    }
+    public int getScore()
+    {
+        return score;
     }
     public bool buySomething(int value)
     {
@@ -46,5 +51,9 @@ public class Player : MonoBehaviour
     {
         className = GameObject.Find("Settings").GetComponent<Settings>().className;
         userInterface = GameObject.Find("Main UI").GetComponent<UI>();
+    }
+    private void Update()
+    {
+        score = money;
     }
 }

@@ -6,18 +6,30 @@ using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 using System;
+using UnityEngine.SceneManagement;
 
 public class UI : MonoBehaviour {
 
     Player player;
     Text money;
+    Base mainBase;
+
     Text currentWave;
     WaveSpawner wave;
     Abillity abillity;
     public GameObject speedGameButton;
     public GameObject useAbilltiyButton;
+
     public GameObject noMoney;
     public GameObject cooldown;
+
+    public GameObject endScreen;
+    public GameObject endGameButton;
+    public GameObject finalScore;
+    public GameObject gameResult;
+    private float enemyBossHealth;
+
+
   
 	void Start ()
     {
@@ -26,6 +38,7 @@ public class UI : MonoBehaviour {
         money = GameObject.Find("Money").GetComponent<Text>();
         wave = GameObject.Find("WaveSpawner").GetComponent<WaveSpawner>();
         currentWave = GameObject.Find("currentWaveText").GetComponent<Text>();
+        mainBase = GameObject.Find("Base").GetComponent<Base>();
         if(player.getClassName() == "General")
             useAbilltiyButton.GetComponent<Image>().sprite = Resources.Load<Sprite>("UI/b5");
         else if(player.getClassName() == "Scientist")
@@ -39,7 +52,40 @@ public class UI : MonoBehaviour {
     {
         money.text = player.getMoney().ToString() + "$";
         currentWave.text = "Current wave is " + wave.getWaveIndex().ToString();
+        if (mainBase.BaseHealth == 0)
+        {
+            endScreen.SetActive(true);
+            gameResult.GetComponent<Text>().text = "Вы проиграли!";
+            gameResult.SetActive(true);
+            finalScore.GetComponent<Text>().text = player.getScore().ToString();
+            finalScore.SetActive(true);
+            endGameButton.SetActive(true);
+        }
+        else if (wave.waveCountdownText.ToString() == "Last")
+        {
+            enemyBossHealth = GameObject.FindGameObjectWithTag("BossMutant").GetComponent<Enemy>().health;
+            if(enemyBossHealth <=0)
+            {
+                endScreen.SetActive(true);
+                gameResult.GetComponent<Text>().text = "Вы победили!";
+                finalScore.GetComponent<Text>().text = player.getScore().ToString();
+                endGameButton.SetActive(true);
+            }
+
+        }
     }
+
+    public void closeEndScreen()
+    {
+        endScreen.SetActive(false);
+        gameResult.GetComponent<Text>().text = "Вы победили!";
+        endGameButton.SetActive(false);
+        SceneManager.LoadScene("FirstScene");
+    }
+
+
+
+
     public void fastGame()
     {
         Time.timeScale = 2f;

@@ -15,6 +15,8 @@ public class BuildTower : MonoBehaviour {
     public GameObject upgradeMenu;
     Transform tilePosition;
 
+
+
     float costMod = 1;
 
     // Use this for initialization
