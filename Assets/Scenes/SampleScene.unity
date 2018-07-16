@@ -6003,7 +6003,7 @@ MonoBehaviour:
   towerSlow: {fileID: 1356104866997552, guid: fe9610b128798094ea3cba4511d9b3de, type: 2}
   towerSniper: {fileID: 1358048700012748, guid: 1a7097ef436bac0488c3b3f6c66b8024,
     type: 2}
-  towerAOE: {fileID: 0}
+  towerAOE: {fileID: 1758909840752836, guid: f657bd7345c1849f39d0829f0aa7ab52, type: 2}
   towerFast: {fileID: 1971206250731028, guid: da17066c6de764146ac7f603d82a7724, type: 2}
   buildMenu: {fileID: 25127665}
 --- !u!1 &520823220
