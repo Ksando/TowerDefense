@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 114643248536311018}
   - component: {fileID: 114230164517607758}
   m_Layer: 0
-  m_Name: SlowingTower
+  m_Name: SlowingTowerOld
   m_TagString: SlowingTower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
