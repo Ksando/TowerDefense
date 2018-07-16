@@ -32,15 +32,9 @@ public class BuildTower : MonoBehaviour {
         if(Input.GetMouseButton(0))
         {
             RaycastHit2D rayHit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
-
-            //Debug.Log(mousePos + " || " + Input.mousePosition.x * (1920f/Screen.width));
             if (rayHit.transform != null && rayHit.transform.tag == "TowerPlacement")
             {
-                /*if (EventSystem.current.IsPointerOverGameObject())
-                    return;*/
-
                 buildMenu.SetActive(true);
-
                 tilePosition = rayHit.transform;
             }
             else if (tilePosition != null && Input.mousePosition.x * (1920f / Screen.width) >= 1570) 
