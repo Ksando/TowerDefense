@@ -55,7 +55,7 @@ public class UI : MonoBehaviour {
         if (mainBase.BaseHealth == 0)
         {
             endScreen.SetActive(true);
-            gameResult.GetComponent<Text>().text = "Вы проиграли!";
+            gameResult.GetComponent<Image>().sprite = Resources.Load<Sprite>("UI/text5");
             gameResult.SetActive(true);
             finalScore.GetComponent<Text>().text = player.getScore().ToString();
             finalScore.SetActive(true);
@@ -67,7 +67,7 @@ public class UI : MonoBehaviour {
             if(enemyBossHealth <=0)
             {
                 endScreen.SetActive(true);
-                gameResult.GetComponent<Text>().text = "Вы победили!";
+                gameResult.GetComponent<Image>().sprite = Resources.Load<Sprite>("UI/text4");
                 finalScore.GetComponent<Text>().text = player.getScore().ToString();
                 endGameButton.SetActive(true);
             }
@@ -81,6 +81,10 @@ public class UI : MonoBehaviour {
         gameResult.GetComponent<Text>().text = "Вы победили!";
         endGameButton.SetActive(false);
         SceneManager.LoadScene("FirstScene");
+    }
+    public void restart()
+    {
+        endScreen.SetActive(false);
     }
 
 
