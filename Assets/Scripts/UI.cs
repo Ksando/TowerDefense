@@ -24,7 +24,6 @@ public class UI : MonoBehaviour {
     public GameObject cooldown;
 
     public GameObject endScreen;
-    public GameObject endGameButton;
     public GameObject finalScore;
     public GameObject gameResult;
     private float enemyBossHealth;
@@ -45,6 +44,9 @@ public class UI : MonoBehaviour {
             useAbilltiyButton.GetComponent<Image>().sprite = Resources.Load<Sprite>("UI/b4");
         else if(player.getClassName() == "Engineer")
             useAbilltiyButton.GetComponent<Image>().sprite = Resources.Load<Sprite>("UI/b6");
+        endScreen.SetActive(false);
+        gameResult.SetActive(false);
+        finalScore.SetActive(false);
     }
 
     // Update is called once per frame
@@ -59,7 +61,7 @@ public class UI : MonoBehaviour {
             gameResult.SetActive(true);
             finalScore.GetComponent<Text>().text = player.getScore().ToString();
             finalScore.SetActive(true);
-            endGameButton.SetActive(true);
+            Time.timeScale = 0f;
         }
         else if (wave.waveCountdownText.ToString() == "Last")
         {
@@ -69,7 +71,7 @@ public class UI : MonoBehaviour {
                 endScreen.SetActive(true);
                 gameResult.GetComponent<Image>().sprite = Resources.Load<Sprite>("UI/text4");
                 finalScore.GetComponent<Text>().text = player.getScore().ToString();
-                endGameButton.SetActive(true);
+                Time.timeScale = 0f;
             }
 
         }
@@ -78,17 +80,16 @@ public class UI : MonoBehaviour {
     public void closeEndScreen()
     {
         endScreen.SetActive(false);
-        gameResult.GetComponent<Text>().text = "Вы победили!";
-        endGameButton.SetActive(false);
+        Time.timeScale = 1f;
         SceneManager.LoadScene("FirstScene");
     }
     public void restart()
     {
         endScreen.SetActive(false);
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("SampleScene");
+
     }
-
-
-
 
     public void fastGame()
     {
