@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class TowerScript : MonoBehaviour
 {
-
+    Settings sets;
+    public AudioSource audio;
     public GameObject Projectile;
     public List<Tower> selfTower = new List<Tower>();
     public TowerType selfType;
@@ -22,6 +23,8 @@ public class TowerScript : MonoBehaviour
              };
     private void Start()
     {
+        sets = GameObject.Find("Settings").GetComponent<Settings>();
+        audio = GetComponent<AudioSource>();
         gcs = FindObjectOfType<GameControllerScr>();
         multi = GameObject.Find("Main Camera").GetComponent<Multipliers>();
         selfTower.Add(gcs.AllTowers[(int)selfType]);
@@ -33,6 +36,7 @@ public class TowerScript : MonoBehaviour
 
     private void Update()
     {
+        audio.volume = sets.soundsVolume;
         if (selfTower[level].CurrCooldown > 0f)
             selfTower[level].CurrCooldown -= Time.deltaTime;
     }
@@ -71,6 +75,7 @@ public class TowerScript : MonoBehaviour
     }
     void Shoot(Transform enemy)
     {
+        audio.Play();
         selfTower[level].CurrCooldown = selfTower[level].Cooldown * multi.getReloadMulti(gameObject.tag);
         GameObject proj = Instantiate(Projectile);
         proj.GetComponent<TowerProjectileScr>().selfTower = selfTower[level];

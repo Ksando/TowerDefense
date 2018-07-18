@@ -82,16 +82,16 @@ public class GameControllerScr : MonoBehaviour
         AllProjectiles.Add(new TowerProjectile(10, 8, "ProjectilesSprites/SniProjectile"));
         AllProjectiles.Add(new TowerProjectile(5, 4, "ProjectilesSprites/AoeProjectile"));
 
-        AllProjectiles.Add(new TowerProjectile(10, 6, "ProjectilesSprites/DiProjectile"));
-        AllProjectiles.Add(new TowerProjectile(10, 0, "ProjectilesSprites/SiProjectile"));
-        AllProjectiles.Add(new TowerProjectile(10, 3, "ProjectilesSprites/FiProjectile"));
-        AllProjectiles.Add(new TowerProjectile(15, 12, "ProjectilesSprites/SniProjectile"));
-        AllProjectiles.Add(new TowerProjectile(5, 6, "ProjectilesSprites/AoeProjectile"));
+        SecondProjectiles.Add(new TowerProjectile(10, 6, "ProjectilesSprites/DiProjectile"));
+        SecondProjectiles.Add(new TowerProjectile(10, 0, "ProjectilesSprites/SiProjectile"));
+        SecondProjectiles.Add(new TowerProjectile(10, 3, "ProjectilesSprites/FiProjectile"));
+        SecondProjectiles.Add(new TowerProjectile(15, 12, "ProjectilesSprites/SniProjectile"));
+        SecondProjectiles.Add(new TowerProjectile(5, 6, "ProjectilesSprites/AoeProjectile"));
 
-        AllProjectiles.Add(new TowerProjectile(10, 7, "ProjectilesSprites/DiProjectile"));
-        AllProjectiles.Add(new TowerProjectile(10, 0, "ProjectilesSprites/SiProjectile"));
-        AllProjectiles.Add(new TowerProjectile(10, 4, "ProjectilesSprites/FiProjectile"));
-        AllProjectiles.Add(new TowerProjectile(15, 14, "ProjectilesSprites/SniProjectile"));
-        AllProjectiles.Add(new TowerProjectile(5, 6, "ProjectilesSprites/AoeProjectile"));
+        ThirdProjectiles.Add(new TowerProjectile(10, 7, "ProjectilesSprites/DiProjectile"));
+        ThirdProjectiles.Add(new TowerProjectile(10, 0, "ProjectilesSprites/SiProjectile"));
+        ThirdProjectiles.Add(new TowerProjectile(10, 4, "ProjectilesSprites/FiProjectile"));
+        ThirdProjectiles.Add(new TowerProjectile(15, 14, "ProjectilesSprites/SniProjectile"));
+        ThirdProjectiles.Add(new TowerProjectile(5, 6, "ProjectilesSprites/AoeProjectile"));
     }
 }

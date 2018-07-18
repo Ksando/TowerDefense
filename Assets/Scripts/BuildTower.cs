@@ -47,7 +47,10 @@ public class BuildTower : MonoBehaviour {
                 if (rayHit.transform.tag == "DefaultTower" || rayHit.transform.tag == "SlowingTower" || rayHit.transform.tag == "SniperTower" || rayHit.transform.tag == "AoeTower" || rayHit.transform.tag == "RapidTower")
                 {
                     upgradeMenu.SetActive(true);
-                    GameObject.Find("Upgrade").GetComponent<Text>().text = rayHit.transform.GetComponent<TowerScript>().selfTower[rayHit.transform.GetComponent<TowerScript>().level + 1].price * upMod + "$";
+                    if (rayHit.transform.gameObject.GetComponent<TowerScript>().level < 2)
+                        GameObject.Find("Upgrade").GetComponent<Text>().text = rayHit.transform.GetComponent<TowerScript>().selfTower[rayHit.transform.GetComponent<TowerScript>().level + 1].price * upMod + "$";
+                    else
+                        GameObject.Find("Upgrade").GetComponent<Text>().text = "maxed";
                     GameObject.Find("Sell").GetComponent<Text>().text = rayHit.transform.GetComponent<TowerScript>().selfTower[rayHit.transform.GetComponent<TowerScript>().level].price * (rayHit.transform.GetComponent<TowerScript>().level == 0 ? costMod : upMod) / 2 + "$";
                     buildMenu.SetActive(false);
                 }
@@ -123,7 +126,7 @@ public class BuildTower : MonoBehaviour {
         upgradeMenu.SetActive(false);
         tilePosition.gameObject.GetComponent<SpriteRenderer>().color = Color.white;
         GameObject.Find("Main Camera").GetComponent<Player>().addMoney((int)(tilePosition.GetComponent<TowerScript>().selfTower[tilePosition.GetComponent<TowerScript>().level].price * (tilePosition.GetComponent<TowerScript>().level == 0 ? costMod : upMod) / 2));
-        Destroy(tilePosition);
+        Destroy(tilePosition.gameObject);
         tilePosition = null;
 	}
 }
