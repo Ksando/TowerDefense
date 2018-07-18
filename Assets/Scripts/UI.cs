@@ -58,6 +58,7 @@ public class UI : MonoBehaviour {
 
 	public void lose()
 	{
+        GameObject.Find("Main Camera").GetComponent<BuildTower>().canOpen = false;
 		endScreen.SetActive(true);
         gameResult.GetComponent<Image>().sprite = Resources.Load<Sprite>("UI/text5");
 	    gameResult.SetActive(true);
@@ -67,7 +68,8 @@ public class UI : MonoBehaviour {
 	}
 
 	public void win()
-	{
+    {
+        GameObject.Find("Main Camera").GetComponent<BuildTower>().canOpen = false;
 		endScreen.SetActive(true);
 		gameResult.SetActive(true);
 		finalScore.SetActive(true);

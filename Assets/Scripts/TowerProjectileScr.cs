@@ -8,6 +8,7 @@ public class TowerProjectileScr : MonoBehaviour
     Transform target;
     TowerProjectile selfProjectile;
     public Tower selfTower;
+    public int level;
     GameControllerScr gcs;
     public float basicDamage;
     Multipliers multi;
@@ -15,7 +16,12 @@ public class TowerProjectileScr : MonoBehaviour
     {
         gcs = FindObjectOfType<GameControllerScr>();
         multi = GameObject.Find("Main Camera").GetComponent<Multipliers>();
-        selfProjectile = gcs.AllProjectiles[selfTower.type];
+        if (level == 0)
+            selfProjectile = gcs.AllProjectiles[selfTower.type];
+        else if (level == 1)
+            selfProjectile = gcs.SecondProjectiles[selfTower.type];
+        else if (level == 2)
+            selfProjectile = gcs.ThirdProjectiles[selfTower.type];
         basicDamage = selfProjectile.damage;
         GetComponent<SpriteRenderer>().sprite = selfProjectile.Spr;
         

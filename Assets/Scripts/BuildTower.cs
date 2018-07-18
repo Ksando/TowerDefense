@@ -18,14 +18,16 @@ public class BuildTower : MonoBehaviour {
     Transform tilePosition;
 
     float costMod = 1;
+    float upMod = 1;
 
     // Use this for initialization
     void Start () {
         costMod = GetComponent<Abillity>().getBuyMulti();
+        upMod = GetComponent<Abillity>().getUpgradeMulti();
         GameObject.Find("Simple").GetComponent<Text>().text = (int)(50f * costMod) + "$";
         GameObject.Find("Slow").GetComponent<Text>().text = (int)(100f * costMod) + "$";
-        GameObject.Find("Sniper").GetComponent<Text>().text = (int)(100f * costMod) + "$";
-        GameObject.Find("AOE").GetComponent<Text>().text = (int)(120f * costMod) + "$";
+        GameObject.Find("Sniper").GetComponent<Text>().text = (int)(120f * costMod) + "$";
+        GameObject.Find("AOE").GetComponent<Text>().text = (int)(100f * costMod) + "$";
         GameObject.Find("Fast").GetComponent<Text>().text = (int)(90f * costMod) + "$";
         buildMenu.SetActive(false);
         upgradeMenu.SetActive(false);
@@ -45,6 +47,8 @@ public class BuildTower : MonoBehaviour {
                 if (rayHit.transform.tag == "DefaultTower" || rayHit.transform.tag == "SlowingTower" || rayHit.transform.tag == "SniperTower" || rayHit.transform.tag == "AoeTower" || rayHit.transform.tag == "RapidTower")
                 {
                     upgradeMenu.SetActive(true);
+                    GameObject.Find("Upgrade").GetComponent<Text>().text = rayHit.transform.GetComponent<TowerScript>().selfTower[rayHit.transform.GetComponent<TowerScript>().level + 1].price * upMod + "$";
+                    GameObject.Find("Sell").GetComponent<Text>().text = rayHit.transform.GetComponent<TowerScript>().selfTower[rayHit.transform.GetComponent<TowerScript>().level].price * (rayHit.transform.GetComponent<TowerScript>().level == 0 ? costMod : upMod) / 2 + "$";
                     buildMenu.SetActive(false);
                 }
                 else if (rayHit.transform.tag == "TowerPlacement")
@@ -63,7 +67,9 @@ public class BuildTower : MonoBehaviour {
             }
             else
             {
-                tilePosition.gameObject.GetComponent<SpriteRenderer>().color = Color.white;
+                if(tilePosition != null)
+                    tilePosition.gameObject.GetComponent<SpriteRenderer>().color = Color.white;
+                
                 tilePosition = null;
                 buildMenu.SetActive(false);
                 upgradeMenu.SetActive(false);
@@ -85,11 +91,11 @@ public class BuildTower : MonoBehaviour {
                     Instantiate(towerSlow, tilePosition.position + new Vector3(0, 0, -1), tilePosition.rotation);
                 break;
             case 3:
-                if (GetComponent<Player>().buySomething((int)(100f * costMod))) 
+                if (GetComponent<Player>().buySomething((int)(120f * costMod))) 
                     Instantiate(towerSniper, tilePosition.position + new Vector3(0, 0, -1), tilePosition.rotation);
                 break;
             case 4:
-                if (GetComponent<Player>().buySomething((int)(120f * costMod))) 
+                if (GetComponent<Player>().buySomething((int)(100f * costMod))) 
                     Instantiate(towerAOE, tilePosition.position + new Vector3(0, 0, -1), tilePosition.rotation);
                 break;
             case 5:
@@ -105,11 +111,19 @@ public class BuildTower : MonoBehaviour {
 
 	public void upgradeTower()
 	{
-
+        upgradeMenu.SetActive(false);
+        tilePosition.gameObject.GetComponent<SpriteRenderer>().color = Color.white;
+        if (GameObject.Find("Main Camera").GetComponent<Player>().buySomething((int)(tilePosition.GetComponent<TowerScript>().selfTower[tilePosition.GetComponent<TowerScript>().level + 1].price * upMod))) 
+           tilePosition.GetComponent<TowerScript>().level++;
+        tilePosition = null;
 	}
 
 	public void sellTower()
 	{
-
+        upgradeMenu.SetActive(false);
+        tilePosition.gameObject.GetComponent<SpriteRenderer>().color = Color.white;
+        GameObject.Find("Main Camera").GetComponent<Player>().addMoney((int)(tilePosition.GetComponent<TowerScript>().selfTower[tilePosition.GetComponent<TowerScript>().level].price * (tilePosition.GetComponent<TowerScript>().level == 0 ? costMod : upMod) / 2));
+        Destroy(tilePosition);
+        tilePosition = null;
 	}
 }

@@ -26,12 +26,14 @@ public class PauseScript : MonoBehaviour {
     }
     public void PauseGame()
     {
-        pauseButton.SetActive(false);
+        GameObject.Find("Main Camera").GetComponent<BuildTower>().canOpen = false;
+        //pauseButton.SetActive(false);
         pauseMenu.SetActive(true);
         Time.timeScale = 0f;
     }
     public void resumeGame()
     {
+        GameObject.Find("Main Camera").GetComponent<BuildTower>().canOpen = true;
         pauseButton.SetActive(true);
         pauseMenu.SetActive(false);
         Time.timeScale = 1f;
