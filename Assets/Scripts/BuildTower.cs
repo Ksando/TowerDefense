@@ -13,6 +13,8 @@ public class BuildTower : MonoBehaviour {
     public GameObject towerFast;
     public GameObject buildMenu;
     public GameObject upgradeMenu;
+
+	public bool canOpen = true;
     Transform tilePosition;
 
     float costMod = 1;
@@ -31,7 +33,11 @@ public class BuildTower : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if(Input.GetMouseButton(0))
+		if(!canOpen)
+		{
+			return;
+		}
+        else if(Input.GetMouseButton(0))
         {
             RaycastHit2D rayHit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
             if (rayHit.transform != null)

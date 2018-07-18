@@ -59,6 +59,7 @@ public class Base : MonoBehaviour {
 
     private void Die()
     {
+		GameObject.Find("Main UI").GetComponent<UI>().lose();
         Destroy(gameObject);
     }
 

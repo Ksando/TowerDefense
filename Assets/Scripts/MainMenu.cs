@@ -11,6 +11,7 @@ public class MainMenu : MonoBehaviour {
 	public GameObject levelSel;
     public GameObject startLevel;
 	public GameObject settings;
+	public GameObject info;
 	public GameObject devs;
 
 	// Use this for initialization
@@ -20,6 +21,7 @@ public class MainMenu : MonoBehaviour {
 		levelSel.SetActive(false);
         startLevel.SetActive(false);
 		settings.SetActive(false);
+		info.SetActive(false);
 		devs.SetActive(false);
 	}
 
@@ -45,6 +47,16 @@ public class MainMenu : MonoBehaviour {
 		settings.SetActive(true);           // Включается сцена Настройки
 		menu.SetActive(false);              // Отключается сцена Главное меню
 		levelSel.SetActive(false);          // Отключается сцена Выбор уровня
+		info.SetActive(false);              // Отключается сцена Справка
+		devs.SetActive(false);              // Отключается сцена Разработчики
+	}
+
+	public void sceneInfo()             // Вызывается при нажатии кнопки "Настройки". Открывается сцена Настройки
+	{
+		info.SetActive(true);				// Включается сцена Справка
+		menu.SetActive(false);              // Отключается сцена Главное меню
+		levelSel.SetActive(false);          // Отключается сцена Выбор уровня
+		settings.SetActive(false);           // Отключается сцена Настройки
 		devs.SetActive(false);              // Отключается сцена Разработчики
 	}
 

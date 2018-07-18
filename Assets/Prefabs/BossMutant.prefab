@@ -230,9 +230,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 639829cfbc728234dbf50eb650f693a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 1200
+  health: 800
   healthBar: {fileID: 114725958369502750}
-  maxHealth: 1200
+  maxHealth: 800
   speed: 0.3
 --- !u!114 &114635826505351034
 MonoBehaviour:
@@ -327,7 +327,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: b22ac7fe54604c34dbb9ce00d4b946e0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 1
+  m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 5.46, y: 5.76}

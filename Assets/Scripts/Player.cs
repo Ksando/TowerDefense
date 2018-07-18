@@ -54,6 +54,9 @@ public class Player : MonoBehaviour
     }
     private void Update()
     {
-        score = money;
+		if (GameObject.Find("Base"))
+			score = money + (int) GameObject.Find("Base").GetComponent<Base>().BaseHealth;
+		else
+			score = 0;
     }
 }

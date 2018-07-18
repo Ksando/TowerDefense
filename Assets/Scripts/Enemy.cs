@@ -36,6 +36,8 @@ public class Enemy : MonoBehaviour
     {
         if (health <= 0)
         {
+			if (gameObject.tag == "BossMutant")
+				GameObject.Find("Main UI").GetComponent<UI>().win();
             Destroy(gameObject);
             player.addMoney(50);
         }

@@ -54,28 +54,27 @@ public class UI : MonoBehaviour {
     {
         money.text = player.getMoney().ToString() + "$";
         currentWave.text = "Current wave is " + wave.getWaveIndex().ToString();
-        if (mainBase.BaseHealth == 0)
-        {
-            endScreen.SetActive(true);
-            gameResult.GetComponent<Image>().sprite = Resources.Load<Sprite>("UI/text5");
-            gameResult.SetActive(true);
-            finalScore.GetComponent<Text>().text = player.getScore().ToString();
-            finalScore.SetActive(true);
-            Time.timeScale = 0f;
-        }
-        else if (wave.waveCountdownText.ToString() == "Last")
-        {
-            enemyBossHealth = GameObject.FindGameObjectWithTag("BossMutant").GetComponent<Enemy>().health;
-            if(enemyBossHealth <=0)
-            {
-                endScreen.SetActive(true);
-                gameResult.GetComponent<Image>().sprite = Resources.Load<Sprite>("UI/text4");
-                finalScore.GetComponent<Text>().text = player.getScore().ToString();
-                Time.timeScale = 0f;
-            }
-
-        }
     }
+
+	public void lose()
+	{
+		endScreen.SetActive(true);
+        gameResult.GetComponent<Image>().sprite = Resources.Load<Sprite>("UI/text5");
+	    gameResult.SetActive(true);
+        finalScore.GetComponent<Text>().text = "Счет: 0";
+		finalScore.SetActive(true);
+	    Time.timeScale = 0f;
+	}
+
+	public void win()
+	{
+		endScreen.SetActive(true);
+		gameResult.SetActive(true);
+		finalScore.SetActive(true);
+		gameResult.GetComponent<Image>().sprite = Resources.Load<Sprite>("UI/text4");
+		finalScore.GetComponent<Text>().text = "Счет:" + player.getScore();
+		Time.timeScale = 0f;
+	}
 
     public void closeEndScreen()
     {
